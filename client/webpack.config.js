@@ -33,4 +33,9 @@ module.exports = {
       template: path.join(__dirname, 'public', 'index.html'),
     }),
   ],
+  resolve: {
+    alias: {
+      Assets: path.resolve(__dirname, 'src/assets'),
+    },
+  },
 };
