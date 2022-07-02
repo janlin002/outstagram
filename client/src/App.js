@@ -5,13 +5,14 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Home from 'Pages/home';
+import Header from './pages/header';
 import Router from './routes';
 
 function App() {
   // console.log(Router, 'Router');
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         {
           Router.map((item) => (
