@@ -12,6 +12,7 @@
       ]
     ],
     "plugins": [
-      "jsx-control-statements"
-    ]
+      "jsx-control-statements",
+    ],
+    "compact": true
   }
