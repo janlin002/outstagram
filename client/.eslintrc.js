@@ -18,7 +18,25 @@ module.exports = {
     'react',
   ],
   rules: {
-    'react/jsx-filename-extension': [0],
     'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+    // 'import/no-unresolved': [2, { ignore: ['src'] }],
+    'react/jsx-filename-extension': [
+      1,
+      {
+        extensions: ['.js', '.jsx'],
+      },
+    ],
   },
+  // settings: {
+  //   'import/resolver': {
+  //     webpack: {
+  //       config: './webpack.config.js',
+  //     },
+  //     node: {
+  //       extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  //       paths: ['./src'],
+  //     },
+  //   },
+  // },
 };

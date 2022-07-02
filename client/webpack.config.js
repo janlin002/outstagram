@@ -5,6 +5,7 @@ module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -28,6 +29,9 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
@@ -35,7 +39,9 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      Assets: path.resolve(__dirname, 'src/assets'),
+      Assets: path.resolve(__dirname, './src/assets'),
+      Pages: path.resolve(__dirname, './src/pages'),
     },
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
 };

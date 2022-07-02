@@ -1,0 +1,17 @@
+{
+    "comments": false,
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "ie": "11"
+          },
+          "useBuiltIns": false
+        }
+      ]
+    ],
+    "plugins": [
+      "jsx-control-statements"
+    ]
+  }

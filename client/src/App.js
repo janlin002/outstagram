@@ -1,12 +1,25 @@
-import React, { useEffect } from 'react';
-import * as api from '../api/index';
+import React from 'react';
+import {
+  BrowserRouter,
+  Routes, // swtich
+  Route,
+} from 'react-router-dom';
+
+import Home from 'Pages/home';
+import Router from './routes';
 
 function App() {
-  useEffect(() => {
-    api.fetchPosts();
-  });
+  // console.log(Router, 'Router');
   return (
-    <div>App</div>
+    <BrowserRouter>
+      <Routes>
+        {
+          Router.map((item) => (
+            <Route path={item.path} element={<item.Child />} />
+          ))
+        }
+      </Routes>
+    </BrowserRouter>
   );
 }
 
