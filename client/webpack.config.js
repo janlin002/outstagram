@@ -28,6 +28,17 @@ module.exports = {
         test: /\.(png|jp(e*)g|svg|gif)$/,
         use: ['file-loader'],
       },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
     ],
   },
   devServer: {
@@ -47,6 +58,7 @@ module.exports = {
     alias: {
       Assets: path.resolve(__dirname, './src/assets'),
       Pages: path.resolve(__dirname, './src/pages'),
+      Components: path.resolve(__dirname, './src/components'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },

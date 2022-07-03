@@ -1,7 +1,13 @@
 import React from 'react';
+import Card from '../components/postCard';
 
 function Home() {
-  <div>123</div>;
+  return (
+    <>
+      <Card />
+      <Card />
+    </>
+  );
 }
 
 export default Home;

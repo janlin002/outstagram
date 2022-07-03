@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter,
+  HashRouter,
   Routes, // swtich
   Route,
 } from 'react-router-dom';
@@ -9,9 +9,9 @@ import Header from './pages/header';
 import Router from './routes';
 
 function App() {
-  // console.log(Router, 'Router');
+  console.log(Router, 'Router');
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header />
       <Routes>
         {
@@ -20,7 +20,7 @@ function App() {
           ))
         }
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

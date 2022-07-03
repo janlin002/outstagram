@@ -1,4 +1,7 @@
 import React from 'react';
+import { AiFillHome, AiOutlineMessage } from 'react-icons/ai';
+import { GoDiffAdded } from 'react-icons/go';
+import { BiUserCircle } from 'react-icons/bi';
 
 function Headers() {
   return (
@@ -15,7 +18,16 @@ function Headers() {
         </form>
         <div>
           <a className="navbar-brand" href="/#">
-            其他
+            <AiFillHome />
+          </a>
+          <a className="navbar-brand" href="/#">
+            <AiOutlineMessage />
+          </a>
+          <a className="navbar-brand" href="/#">
+            <GoDiffAdded />
+          </a>
+          <a className="navbar-brand" href="/#">
+            <BiUserCircle />
           </a>
         </div>
       </div>
