@@ -36,12 +36,16 @@
     "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-jsx-control-statements": "^3.0.0",
     "file-loader": "^6.2.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-loading-skeleton": "^3.1.0",
     "react-router-dom": "^6.3.0",
-    "style-loader": "^3.3.1"
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "style-loader": "^3.3.1",
+    "swiper": "^8.2.6"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",

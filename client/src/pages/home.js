@@ -1,9 +1,9 @@
 import React from 'react'
-import Card from '../components/postCard'
+import PostCard from '../components/postCard'
 
 function Home() {
   return (
-    <Card />
+    <PostCard />
   )
 }
 

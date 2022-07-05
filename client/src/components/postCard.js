@@ -4,6 +4,8 @@ import { BiMessageRounded } from 'react-icons/bi'
 
 import '../assets/css/postCard.scss'
 import postData from '../util/postCardFakedata.json'
+import PostNoData from './postCardNoData'
+import PostImage from './postImage'
 
 function PostCard() {
   const [hitHeart, setHitHeart] = useState(false)
@@ -12,8 +14,10 @@ function PostCard() {
     setHitHeart(!hitHeart)
   }
 
+  console.log(postData.postImage, postData)
+
   return (
-    postData.length === 0 ? 'no Data' : (
+    postData.length === 0 ? <PostNoData /> : (
       postData.map((item) => (
         <div className="post-card-style">
           <div className="card-deck d-block justify-content-center mt-3">
@@ -25,7 +29,8 @@ function PostCard() {
                     <div className="d-flex justify-content-center card-name">{item.userName}</div>
                   </div>
                 </div>
-                <img className="card-img-top" src={item.postImage} alt="CardImage" />
+                <PostImage imageData={item.postImage} />
+                {/* <img className="card-img-top" src={item.postImage} alt="CardImage" /> */}
                 <div className="d-flex">
                   <div
                     role="button"
@@ -69,7 +74,6 @@ function PostCard() {
             </div>
           </div>
         </div>
-
       ))
     )
   )
@@ -78,4 +82,3 @@ function PostCard() {
 export default PostCard
 
 // TODO 按讚需要做分辨，不然全部都會勾起來
-// DONE like數加千分號
