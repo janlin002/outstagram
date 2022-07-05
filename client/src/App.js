@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { Suspense } from 'react'
 import {
   HashRouter,
   Routes, // swtich
   Route,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
-import Header from './pages/header';
-import Router from './routes';
+import LoadingPage from 'Components/loadingPage'
+import Header from './pages/header'
+import Router from './routes'
 
 function App() {
-  console.log(Router, 'Router');
   return (
     <HashRouter>
       <Header />
-      <Routes>
-        {
+      <Suspense fallback={<LoadingPage />}>
+        <Routes>
+          {
           Router.map((item) => (
             <Route path={item.path} element={<item.Child />} />
           ))
         }
-      </Routes>
+        </Routes>
+      </Suspense>
     </HashRouter>
-  );
+  )
 }
 
-export default App;
+export default App

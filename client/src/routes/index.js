@@ -1,12 +1,12 @@
-import { lazy } from 'react';
+import { lazy } from 'react'
 
-const Home = lazy(() => import('Pages/home'));
+const Home = lazy(() => import('Pages/home'))
 
 const router = [
   {
     path: '/',
     Child: Home,
   },
-];
+]
 
-export default router;
+export default router

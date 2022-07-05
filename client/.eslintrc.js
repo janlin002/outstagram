@@ -27,16 +27,7 @@ module.exports = {
         extensions: ['.js', '.jsx'],
       },
     ],
+    semi: [2, 'never'], // 結尾不加分號
+    'react/jsx-one-expression-per-line': 'off',
   },
-  // settings: {
-  //   'import/resolver': {
-  //     webpack: {
-  //       config: './webpack.config.js',
-  //     },
-  //     node: {
-  //       extensions: ['.js', '.jsx', '.ts', '.tsx'],
-  //       paths: ['./src'],
-  //     },
-  //   },
-  // },
-};
+}

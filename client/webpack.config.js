@@ -1,6 +1,6 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackBar = require('webpackbar');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackBar = require('webpackbar')
 
 module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
@@ -43,6 +43,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    open: true, // start後自動打開瀏覽器
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -53,6 +54,7 @@ module.exports = {
       basic: false, // 默认true，启用一个简单的日志报告器
       profile: false, // 默认false，启用探查器。
     }),
+    // new DashboardPlugin(dashboard.setData),
   ],
   resolve: {
     alias: {
@@ -62,4 +64,4 @@ module.exports = {
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
-};
+}
