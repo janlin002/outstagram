@@ -29,5 +29,6 @@ module.exports = {
     ],
     semi: [2, 'never'], // 結尾不加分號
     'react/jsx-one-expression-per-line': 'off',
+    'default-param-last': 'off',
   },
 }

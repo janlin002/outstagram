@@ -1,32 +1,40 @@
 import React, { useState } from 'react'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { BiMessageRounded } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import '../assets/css/postCard.scss'
-import postData from '../util/postCardFakedata.json'
 import PostNoData from './postCardNoData'
 import PostImage from './postImage'
 
-function PostCard() {
+function PostCard({ postData }) {
   const [hitHeart, setHitHeart] = useState(false)
+  const navigate = useNavigate()
 
   const handleHeartIcon = () => {
     setHitHeart(!hitHeart)
   }
-
-  console.log(postData.postImage, postData)
 
   return (
     postData.length === 0 ? <PostNoData /> : (
       postData.map((item) => (
         <div className="post-card-style">
           <div className="card-deck d-block justify-content-center mt-3">
-            <div className="card col-5 m-auto">
+            <div className="card col-6 m-auto">
               <div className="card-body">
                 <div className="d-flex mb-3">
                   <img className="card-img-top card-image" src={item.avatar} alt="CardImage" />
                   <div className="d-flex justify-content-center" style={{ marginLeft: '10px' }}>
-                    <div className="d-flex justify-content-center card-name">{item.userName}</div>
+                    <div
+                      role="button"
+                      className="d-flex justify-content-center card-name"
+                      onClick={() => navigate('/userInfo')}
+                      onKeyDown=""
+                      tabIndex={0}
+                    >
+                      {item.userName}
+                    </div>
                   </div>
                 </div>
                 <PostImage imageData={item.postImage} />
@@ -80,5 +88,9 @@ function PostCard() {
 }
 
 export default PostCard
+
+PostCard.propTypes = {
+  postData: PropTypes.instanceOf(Object).isRequired,
+}
 
 // TODO 按讚需要做分辨，不然全部都會勾起來

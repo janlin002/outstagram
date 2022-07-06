@@ -10,3 +10,16 @@
 .slick-next:before {
   color: black!important;
 }
+
+.user-info-avatar{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px solid black
+}
+
+.post-card-style{
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
