@@ -1,11 +1,11 @@
-### 基礎架構圖
+# OUTSTAGRAM
 
-2022/06/15
+## 專案架構
 
-![架構圖](./client/src/assets/image/projectTree.png)
+[Link]()
 
-2022/07/02
+## 使用技術
 
-![interface-phone](./client/src/assets/image/outstagramUI.png)
+### 前端
 
-![interface-platform](./client/src/assets/image/platformUI.png)
+### 後端
