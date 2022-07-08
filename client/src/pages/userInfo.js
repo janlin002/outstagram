@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TiTick } from 'react-icons/ti'
 
 import userData from '../util/userInfoFakedata.json'
+import CustomModal from '../components/customModal/basic'
+import UserInfoPostItem from '../components/userInfoPostItem'
 
 function UserInfo() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [detailData, setDetailData] = useState({})
+
+  const handleModalClose = () => {
+    setModalOpen(false)
+  }
+
+  const handlePostDetail = ({ postItem }) => {
+    setDetailData(postItem)
+    setModalOpen(true)
+  }
+
   return (
     userData.map((item) => (
       <div className="card-deck d-block justify-content-center mt-3" key={item.name}>
@@ -29,7 +43,14 @@ function UserInfo() {
           <div className="row">
             {
                 item.post.map((postItem) => (
-                  <div className="col-lg-4" key={postItem.image}>
+                  <div
+                    role="button"
+                    className="col-lg-4"
+                    key={postItem.image}
+                    onClick={() => handlePostDetail({ postItem })}
+                    onKeyDown={() => handlePostDetail({ postItem })}
+                    tabIndex={0}
+                  >
                     <img
                       src={postItem.image}
                       className="post-card-style"
@@ -39,6 +60,14 @@ function UserInfo() {
                 ))
             }
           </div>
+          <CustomModal
+            modalOpen={modalOpen}
+            onRequestClose={handleModalClose}
+          >
+            <UserInfoPostItem
+              detailData={detailData}
+            />
+          </CustomModal>
         </div>
       </div>
     ))
@@ -47,3 +76,5 @@ function UserInfo() {
 }
 
 export default UserInfo
+
+// image改成按紐，點擊觸發Modal打開，並且把相對應的資料傳到component中

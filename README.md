@@ -14,6 +14,7 @@
 - React-icons
 - React-loading-skeleton
 - React-slick
+- React-Modal
 - Redux-logger (在 console 內看 redux)
 - Sweetalert2
 - Formik && Yup (驗證)
@@ -24,4 +25,4 @@
 - express
 - mongoDB
 
-### 畫面展示
+## 畫面展示
