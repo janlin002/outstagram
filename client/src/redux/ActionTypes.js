@@ -1,2 +1,2 @@
 export const TEST = 'TEST'
-export const TEST2 = 'TEST2'
+export const CHANGE_LOGIN_STATUS = 'CHANGE_LOGIN_STATUS'

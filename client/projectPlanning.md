@@ -29,3 +29,8 @@
 ![post-item](./src/assets/image/postItem.png)
 
 經過思考過後不加入追蹤功能
+
+## api 規劃
+
+- 首頁有使用者選取頁面 - userA, userB, userC
+- 選取其中一個使用者後，進入頁面打 api，取得其他兩為使用者的發文資料

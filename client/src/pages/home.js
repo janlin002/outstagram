@@ -1,15 +1,17 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import PostCard from '../components/postCard'
 import postData from '../util/postCardFakedata.json'
 
 import {
-  test,
-} from '../redux/actions'
+  loginStatus,
+} from '../redux/selectors'
 
 function Home() {
-  const dispatch = useDispatch()
+  const userLoginStatus = useSelector(loginStatus)
+
+  console.log(userLoginStatus, 'userLoginStatus')
 
   return (
     <PostCard

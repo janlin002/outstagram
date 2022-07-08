@@ -19,7 +19,11 @@
 }
 
 .post-card-style{
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 5px;
+}
+
+.input-text{
+  width: 47vw
 }

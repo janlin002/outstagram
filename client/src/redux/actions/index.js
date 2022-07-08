@@ -1,6 +1,6 @@
 import {
   TEST,
-  TEST2,
+  CHANGE_LOGIN_STATUS,
 } from '../ActionTypes'
 
 export const test = ({ payload }) => ({
@@ -8,7 +8,7 @@ export const test = ({ payload }) => ({
   payload,
 })
 
-export const test2 = ({ payload }) => ({
-  type: TEST2,
+export const changeLoginStatus = (payload) => ({
+  type: CHANGE_LOGIN_STATUS,
   payload,
 })
