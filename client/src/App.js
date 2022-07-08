@@ -17,7 +17,7 @@ function App() {
         <Routes>
           {
           Router.map((item) => (
-            <Route path={item.path} element={<item.Child />} />
+            <Route path={item.path} element={<item.Child />} key={item.path} />
           ))
         }
         </Routes>

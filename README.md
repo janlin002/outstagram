@@ -16,9 +16,12 @@
 - React-slick
 - Redux-logger (在 console 內看 redux)
 - Sweetalert2
+- Formik && Yup (驗證)
 
 ### 後端
 
 - node
 - express
 - mongoDB
+
+### 畫面展示

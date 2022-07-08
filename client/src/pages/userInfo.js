@@ -6,9 +6,9 @@ import userData from '../util/userInfoFakedata.json'
 function UserInfo() {
   return (
     userData.map((item) => (
-      <div className="card-deck d-block justify-content-center mt-3">
+      <div className="card-deck d-block justify-content-center mt-3" key={item.name}>
         <div className="card col-9 m-auto">
-          <div className="d-flex align-items-center m-3">
+          <div className="d-flex align-items-center m-5">
             <div className="col-6 text-center">
               <img
                 src={item.avatar}
@@ -29,7 +29,7 @@ function UserInfo() {
           <div className="row">
             {
                 item.post.map((postItem) => (
-                  <div className="col-lg-4">
+                  <div className="col-lg-4" key={postItem.image}>
                     <img
                       src={postItem.image}
                       className="post-card-style"
