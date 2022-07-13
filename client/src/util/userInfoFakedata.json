@@ -6,8 +6,13 @@
         "popular": true,
         "post": [
             {
-                "image": "https://media.gq.com.tw/photos/60cb277c3e90b1cefb321a43/master/pass/4Yz2Ang.png",
-                "postDate": "data",
+                "image": [
+                    {
+                        "image": "https://media.gq.com.tw/photos/60cb277c3e90b1cefb321a43/master/pass/4Yz2Ang.png",
+                        "id": "1"
+                    }
+                ],
+                "id": "1",
                 "content": "五條",
                 "like": "10",
                 "comment": [
@@ -18,8 +23,13 @@
                 ]
             },
             {
-                "image": "https://news.agentm.tw/wp-content/uploads/cover-1-901-750x422.jpg",
-                "postDate": "data",
+                "image": [
+                    {
+                        "image": "https://news.agentm.tw/wp-content/uploads/cover-1-901-750x422.jpg",
+                        "id": "2"
+                    }
+                ],
+                "id": "2",
                 "content": "主角",
                 "like": "10",
                 "comment": [
@@ -30,8 +40,13 @@
                 ]
             },
             {
-                "image": "https://im.marieclaire.com.tw/m800c533h100b0/assets/mc/202106/60C8765A7AA7D1623750234.jpeg",
-                "postDate": "data",
+                "image": [
+                    {
+                        "image": "https://im.marieclaire.com.tw/m800c533h100b0/assets/mc/202106/60C8765A7AA7D1623750234.jpeg",
+                        "id": "3"
+                    }
+                ],
+                "id": "3",
                 "content": "矇眼五條",
                 "like": "10",
                 "comment": [

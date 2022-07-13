@@ -16,7 +16,9 @@ function PostImage({ imageData }) {
   }
   const len = imageData.length
 
-  if (len === 1) {
+  console.log(imageData, 'imageData')
+
+  if (len && len === 1) {
     return (
       <img className="card-img-top" src={imageData[0].image} alt="CardImage" />
     )
@@ -24,7 +26,7 @@ function PostImage({ imageData }) {
   return (
     <Slider {...settings}>
       {
-        imageData.map((item) => (
+        imageData && imageData.map((item) => (
           <div>
             <img style={{ width: '100%', height: '100%' }} src={item.image} alt="" />
           </div>

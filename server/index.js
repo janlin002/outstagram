@@ -5,6 +5,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 
 import postRouter from './routes/posts.js'
+import userRouter from './routes/user.js'
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.use(cors())
 dotenv.config()
 
 app.use('/posts', postRouter)
+app.use('/user', userRouter)
 
 // 解析JSON格式 請求大小限制: 30mb
 app.use(bodyParser.json())

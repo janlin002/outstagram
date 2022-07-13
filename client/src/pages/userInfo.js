@@ -45,14 +45,15 @@ function UserInfo() {
                 item.post.map((postItem) => (
                   <div
                     role="button"
-                    className="col-lg-4"
+                    className="col-4"
                     key={postItem.image}
                     onClick={() => handlePostDetail({ postItem })}
                     onKeyDown={() => handlePostDetail({ postItem })}
                     tabIndex={0}
+                    id={postItem.id}
                   >
                     <img
-                      src={postItem.image}
+                      src={postItem.image[0].image}
                       className="post-card-style"
                       alt=""
                     />
@@ -66,6 +67,7 @@ function UserInfo() {
           >
             <UserInfoPostItem
               detailData={detailData}
+              userData={userData}
             />
           </CustomModal>
         </div>

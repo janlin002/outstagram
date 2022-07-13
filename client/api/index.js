@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const url = 'http://localhost:2000/posts'
+const postUrl = 'http://localhost:2000/posts'
+const userUrl = 'http://localhost:2000/user'
 
-export const fetchPosts = () => axios.get(url)
-export const fetchPosts2 = () => axios.get(url)
+export const fetchPosts = () => axios.get(postUrl)
+export const fetchUser = () => axios.get(userUrl)

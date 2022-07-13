@@ -3,20 +3,37 @@ import {
 } from 'redux-saga/effects'
 
 import {
-  CHANGE_LOGIN_STATUS,
+  GET_USER_INFO,
 } from '../ActionTypes'
 
-function* changeLoginStatus(action) {
+import {
+  getUserInfoSuccess,
+  getUserInfoFailure,
+} from '../actions'
+
+import { fetchUser } from '../../../api'
+
+function* getUserInfo() {
   try {
-    const user = yield call(Api.fetchUser, action.payload.userId)
-    yield put({ type: 'USER_FETCH_SUCCEEDED', user })
-  } catch (e) {
-    yield put({ type: 'USER_FETCH_FAILED', message: e.message })
+    const user = yield call(fetchUser)
+
+    console.table(user.data)
+
+    const { data } = user
+
+    yield put(
+      getUserInfoSuccess(data),
+    )
+  } catch (error) {
+    console.error(error)
+    yield put(
+      getUserInfoFailure(error.message),
+    )
   }
 }
 
 function* mySaga() {
-  yield takeLatest('CHANGE_LOGIN_STATUS', changeLoginStatus)
+  yield takeLatest(GET_USER_INFO, getUserInfo)
 }
 
 export default mySaga

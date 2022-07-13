@@ -15,23 +15,23 @@ import {
   changeLoginStatus,
 } from '../redux/actions'
 
-// import {
-//   loginStatus,
-// } from '../redux/selectors'
+import {
+  loginStatus,
+} from '../redux/selectors'
 
 function Headers() {
   const dispatch = useDispatch()
   const { pathname } = useLocation()
   const navigate = useNavigate()
-  // const userLoginStatus = useSelector(loginStatus)
+  const userLoginStatus = useSelector(loginStatus)
 
   // TODO 開發完畢要打開
-  // useEffect(() => {
-  //   if (userLoginStatus === false && pathname !== '/') {
-  //     Swal()
-  //     navigate('/')
-  //   }
-  // }, [userLoginStatus, pathname])
+  useEffect(() => {
+    if (userLoginStatus === false && pathname !== '/') {
+      Swal()
+      navigate('/')
+    }
+  }, [userLoginStatus, pathname])
 
   const handleLogoutClick = () => {
     dispatch(changeLoginStatus(false))

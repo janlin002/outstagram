@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import loginImage from '../assets/image/20944201.jpg'
 import {
   changeLoginStatus,
+  // getUserInfo,
 } from '../redux/actions'
 
 function Login() {
@@ -15,6 +16,7 @@ function Login() {
 
   const handleLoginClick = () => {
     dispatch(changeLoginStatus(true))
+    // dispatch(getUserInfo())
     navigate('/home')
   }
   return (
