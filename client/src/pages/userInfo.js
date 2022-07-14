@@ -1,11 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { TiTick } from 'react-icons/ti'
 
 import userData from '../util/userInfoFakedata.json'
 import CustomModal from '../components/customModal/basic'
 import UserInfoPostItem from '../components/userInfoPostItem'
 
+import {
+  getUserInfo,
+} from '../redux/actions'
+
+import {
+  loginStatus,
+  userInfo,
+  userInfoLoading,
+} from '../redux/selectors'
+
 function UserInfo() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getUserInfo())
+  }, [])
+  const userInfoData = useSelector(userInfo)
+  const userInfoDataLoading = useSelector(userInfoLoading)
+
   const [modalOpen, setModalOpen] = useState(false)
   const [detailData, setDetailData] = useState({})
 
@@ -18,8 +37,10 @@ function UserInfo() {
     setModalOpen(true)
   }
 
+  console.log(userInfoData, userData, 'data check')
+
   return (
-    userData.map((item) => (
+    userInfoData.map((item) => (
       <div className="card-deck d-block justify-content-center mt-3" key={item.name}>
         <div className="card col-9 m-auto">
           <div className="d-flex align-items-center m-5">

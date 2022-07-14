@@ -6,8 +6,12 @@ const postSchema = mongoose.Schema({
     postImage: {
         image: String,
     },
-    like: String,
-    postContent: String
+    postContent: [
+        {
+            name: String,
+            content: String
+        }
+    ]
 })
 
 var PostItems = mongoose.model('PostItems', postSchema)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
-import { BiMessageRounded } from 'react-icons/bi'
+// import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+// import { BiMessageRounded } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
@@ -9,11 +9,16 @@ import PostNoData from './postCardNoData'
 import PostImage from './postImage'
 
 function PostCard({ postData }) {
-  const [hitHeart, setHitHeart] = useState(false)
+  // const [hitHeart, setHitHeart] = useState(false)
+  const [commentText, setCommentText] = useState('')
   const navigate = useNavigate()
 
-  const handleHeartIcon = () => {
-    setHitHeart(!hitHeart)
+  // const handleHeartIcon = () => {
+  //   setHitHeart(!hitHeart)
+  // }
+
+  const handleSubmit = () => {
+    setCommentText('')
   }
 
   return (
@@ -38,8 +43,7 @@ function PostCard({ postData }) {
                   </div>
                 </div>
                 <PostImage imageData={item.postImage} />
-                {/* <img className="card-img-top" src={item.postImage} alt="CardImage" /> */}
-                <div className="d-flex">
+                {/* <div className="d-flex">
                   <div
                     role="button"
                     className="card-icon"
@@ -68,16 +72,41 @@ function PostCard({ postData }) {
                   <h5>
                     {(item.like.replace(/\B(?=(\d{3})+(?!\d))/g, ','))}個讚
                   </h5>
-                </div>
+                </div> */}
 
-                <p className="card-text">
-                  <div>
-                    <b>
-                      {item.userName}
-                    </b>
-                  </div>
-                  {item.postContent}
-                </p>
+                <h3 className="text-center m-3">留言板</h3>
+
+                {
+                  item.postContent.length === 0 ? (
+                    <div className="mt-3 mb-3">目前沒有留言...</div>
+                  ) : (
+                    item.postContent.map((contentItem) => (
+                      <div className="d-block">
+                        <p className="card-text">
+                          <b style={{ marginRight: '10px' }}>
+                            {contentItem.name}
+                          </b>
+                          {contentItem.content}
+                        </p>
+                      </div>
+                    ))
+                  )
+                }
+                <div>
+                  <input
+                    type="text"
+                    style={{ width: '100%' }}
+                    placeholder="請輸入..."
+                    onChange={(e) => setCommentText(e.target.value)}
+                    value={commentText}
+                  />
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleSubmit}
+                  >送出
+                  </button>
+                </div>
               </div>
             </div>
           </div>

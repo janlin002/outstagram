@@ -11,4 +11,14 @@ export const userInfoErro = (state) => (
   state.userInfoErro
 )
 
+export const postItems = (state) => (
+  state.postItems
+)
+export const postItemsLoading = (state) => (
+  state.postItemsLoading
+)
+export const postItemsError = (state) => (
+  state.postItemsError
+)
+
 export const abc = 'abc'

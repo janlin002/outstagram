@@ -5,7 +5,11 @@
         "postImage": [
             {"image": "https://arielhsu.tw/wp-content/uploads/20191014054317_48.jpg"}
         ],
-        "like": "1000",
-        "postContent": "This is a wider card with supporting text below as a natural lead-in to batman"
+        "postContent": [
+            {
+                "name": "bill",
+                "content": "nice"
+            }
+        ]
     }
 ]

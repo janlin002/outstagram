@@ -5,21 +5,17 @@ import PostCard from '../components/postCard'
 import postData from '../util/postCardFakedata.json'
 
 import {
-  loginStatus,
-  userInfo,
-  userInfoLoading,
+  postItems,
 } from '../redux/selectors'
 
 function Home() {
-  // const userLoginStatus = useSelector(loginStatus)
-  const userInfoData = useSelector(userInfo)
-  const userInfoDataLoading = useSelector(userInfoLoading)
+  const postItem = useSelector(postItems)
 
-  console.log(userInfoData, postData, 'userInfoData')
+  console.log(postItem, postData, 'userInfoData')
 
   return (
     <PostCard
-      postData={postData}
+      postData={postItem}
     />
   )
 }
