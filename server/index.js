@@ -14,15 +14,15 @@ app.use(cors())
 // 透過 dotenv 讀取 .env 檔案，存到 process.env 裡面
 dotenv.config()
 
-app.use('/posts', postRouter)
-app.use('/user', userRouter)
-
 // 解析JSON格式 請求大小限制: 30mb
 app.use(bodyParser.json())
 app.use(bodyParser.json({limit: "30mb", extended: true}))
 
 // 解析urlencoded格式 請求大小限制: 30mb, 擴展
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
+
+app.use('/posts', postRouter)
+app.use('/user', userRouter)
 
 // const CONNECTION_URL = 'mongodb+srv://outstagram:outstagram@cluster0.huesm.mongodb.net/?retryWrites=true&w=majority'
 

@@ -14,9 +14,9 @@ function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleLoginClick = () => {
+  const handleLoginClick = (user) => {
     dispatch(changeLoginStatus(true))
-    dispatch(getPostItems())
+    dispatch(getPostItems(user))
     navigate('/home')
   }
   return (
@@ -33,7 +33,7 @@ function Login() {
             <button
               className="btn btn-outline-primary m-2"
               type="button"
-              onClick={() => handleLoginClick()}
+              onClick={() => handleLoginClick('user1')}
             >
               <BiUser />
               USER-A
@@ -41,7 +41,7 @@ function Login() {
             <button
               className="btn btn-outline-primary m-2"
               type="button"
-              onClick={() => handleLoginClick()}
+              onClick={() => handleLoginClick('user2')}
             >
               <BiUser />
               USER-B
@@ -49,7 +49,7 @@ function Login() {
             <button
               className="btn btn-outline-primary m-2"
               type="button"
-              onClick={() => handleLoginClick()}
+              onClick={() => handleLoginClick('user3')}
             >
               <BiUser />
               USER-C

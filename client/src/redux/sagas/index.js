@@ -36,9 +36,9 @@ function* getUserInfo() {
   }
 }
 
-function* getPostItems() {
+function* getPostItems({ payload }) {
   try {
-    const postItem = yield call(fetchPosts)
+    const postItem = yield call(fetchPosts, payload)
 
     const postItems = postItem.data
 
