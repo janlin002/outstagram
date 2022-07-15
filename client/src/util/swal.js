@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2'
 
-const SwalAlert = () => (
+export const SwalAlert = () => (
   Swal.fire({
     icon: 'error',
     title: '錯誤',
@@ -8,4 +8,10 @@ const SwalAlert = () => (
   })
 )
 
-export default SwalAlert
+export const SwalLogout = () => (
+  Swal.fire({
+    icon: 'success',
+    title: 'Congratulations!',
+    text: '登出成功',
+  })
+)

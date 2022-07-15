@@ -6,10 +6,10 @@ import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { AiOutlineHome } from 'react-icons/ai'
 import { GoDiffAdded } from 'react-icons/go'
 import { BiUserCircle } from 'react-icons/bi'
-import { MdPostAdd } from 'react-icons/md'
+// import { MdPostAdd } from 'react-icons/md'
 import { FiLogOut } from 'react-icons/fi'
 
-import Swal from '../util/swal'
+import { SwalAlert, SwalLogout } from '../util/swal'
 
 import {
   changeLoginStatus,
@@ -28,7 +28,7 @@ function Headers() {
   // TODO 開發完畢要打開
   useEffect(() => {
     if (userLoginStatus === false && pathname !== '/') {
-      Swal()
+      SwalAlert()
       navigate('/')
     }
   }, [userLoginStatus, pathname])
@@ -36,6 +36,7 @@ function Headers() {
   const handleLogoutClick = () => {
     dispatch(changeLoginStatus(false))
     navigate('/')
+    SwalLogout()
   }
 
   return (
@@ -56,11 +57,11 @@ function Headers() {
               style={pathname === '/home' ? { color: 'red' } : ''}
             />
           </Link>
-          <Link className="navbar-brand" to="/postItem">
+          {/* <Link className="navbar-brand" to="/postItem">
             <MdPostAdd
               style={pathname === '/postItem' ? { color: 'red' } : ''}
             />
-          </Link>
+          </Link> */}
           <Link className="navbar-brand" to="/upload-file">
             <GoDiffAdded
               style={pathname === '/upload-file' ? { color: 'red' } : ''}
@@ -78,7 +79,7 @@ function Headers() {
                 className="navbar-brand"
                 onClick={() => handleLogoutClick()}
                 tabIndex={0}
-                onKeyDown=""
+                onKeyDown={() => handleLogoutClick()}
               >
                 <FiLogOut />
               </div>

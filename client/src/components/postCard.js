@@ -35,7 +35,7 @@ function PostCard({ postData }) {
                       role="button"
                       className="d-flex justify-content-center card-name"
                       onClick={() => navigate('/userInfo')}
-                      onKeyDown=""
+                      onKeyDown={() => navigate('/userInfo')}
                       tabIndex={0}
                     >
                       {item.userName}
@@ -104,7 +104,8 @@ function PostCard({ postData }) {
                     type="button"
                     className="btn btn-primary"
                     onClick={handleSubmit}
-                  >送出
+                  >
+                    送出
                   </button>
                 </div>
               </div>
