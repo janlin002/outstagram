@@ -16,8 +16,6 @@ function PostImage({ imageData }) {
   }
   const len = imageData.length
 
-  console.log(imageData, 'imageData')
-
   if (len && len === 1) {
     return (
       <img className="card-img-top" src={imageData[0].image} alt="CardImage" />

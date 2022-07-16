@@ -5,6 +5,7 @@ const Home = lazy(() => import('Pages/home'))
 const UserInfo = lazy(() => import('Pages/userInfo'))
 const postItem = lazy(() => import('Pages/postItem'))
 const uploadFile = lazy(() => import('Pages/uploadFile'))
+const setting = lazy(() => import('Pages/settings'))
 
 const router = [
   {
@@ -26,6 +27,10 @@ const router = [
   {
     path: '/upload-file',
     Child: uploadFile,
+  },
+  {
+    path: '/settings',
+    Child: setting,
   },
 ]
 

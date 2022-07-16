@@ -23,4 +23,29 @@ export const getPosts = async(req, res)=>{
     }
 }
 
+export const postComment = async(req, res) =>{
+    try{
+        const PostItem = await PostItems.find()
+
+        const update = await PostItems.update(
+            {
+                '_id': req.body.id
+            },
+            {
+                $push:{
+                    "postContent": {
+                        name: req.body.name,
+                        content: req.body.content
+                    }
+                }
+            }
+        )
+
+
+        res.status(200).json(PostItem)
+    }catch(error){
+        res.status(404).json({ message: error.message})
+    }
+}
+
 export default router

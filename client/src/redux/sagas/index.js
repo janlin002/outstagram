@@ -5,6 +5,8 @@ import {
 import {
   GET_USER_INFO,
   GET_POST_ITEMS,
+  UPDATE_USER_INFO,
+  POST_COMMENT,
 } from '../ActionTypes'
 
 import {
@@ -13,9 +15,17 @@ import {
 
   getPostItemsSuccess,
   getPostItemsFailure,
+
+  updateUserInfoSuccess,
+  updateUserInfoFailure,
 } from '../actions'
 
-import { fetchUser, fetchPosts } from '../../../api'
+import {
+  fetchUser,
+  fetchPosts,
+  updateUserInfo,
+  postComments,
+} from '../../../api'
 
 function* getUserInfo() {
   try {
@@ -53,9 +63,31 @@ function* getPostItems({ payload }) {
   }
 }
 
+function* updateUserInfos({ payload }) {
+  try {
+    const updateItem = yield call(updateUserInfo, payload)
+  } catch (error) {
+    console.error(error)
+
+    yield put(
+      updateUserInfoFailure(error.message),
+    )
+  }
+}
+
+function* postComment({ payload }) {
+  try {
+    const postComment = yield call(postComments, payload)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 function* mySaga() {
   yield takeLatest(GET_USER_INFO, getUserInfo)
   yield takeLatest(GET_POST_ITEMS, getPostItems)
+  yield takeLatest(UPDATE_USER_INFO, updateUserInfos)
+  yield takeLatest(POST_COMMENT, postComment)
 }
 
 export default mySaga

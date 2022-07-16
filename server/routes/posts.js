@@ -1,9 +1,11 @@
 import express from 'express'
 
-import { getPosts } from '../controllers/posts.js'
+import { getPosts, postComment } from '../controllers/posts.js'
 
 const router = express.Router()
 
 router.post('/', getPosts)
+
+router.post('/comment', postComment)
 
 export default router

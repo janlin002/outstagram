@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLocation, Link, useNavigate } from 'react-router-dom'
 
-import { AiOutlineHome } from 'react-icons/ai'
+import { AiOutlineHome, AiOutlineSetting } from 'react-icons/ai'
 import { GoDiffAdded } from 'react-icons/go'
 import { BiUserCircle } from 'react-icons/bi'
 // import { MdPostAdd } from 'react-icons/md'
@@ -65,6 +65,11 @@ function Headers() {
           <Link className="navbar-brand" to="/upload-file">
             <GoDiffAdded
               style={pathname === '/upload-file' ? { color: 'red' } : ''}
+            />
+          </Link>
+          <Link className="navbar-brand" to="/settings">
+            <AiOutlineSetting
+              style={pathname === '/settings' ? { color: 'red' } : ''}
             />
           </Link>
           <Link className="navbar-brand" to="/userInfo">

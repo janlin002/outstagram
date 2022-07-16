@@ -8,6 +8,7 @@ import loginImage from '../assets/image/20944201.jpg'
 import {
   changeLoginStatus,
   getPostItems,
+  getCurrentUser,
 } from '../redux/actions'
 
 function Login() {
@@ -16,6 +17,7 @@ function Login() {
 
   const handleLoginClick = (user) => {
     dispatch(changeLoginStatus(true))
+    dispatch(getCurrentUser(user))
     dispatch(getPostItems(user))
     navigate('/home')
   }

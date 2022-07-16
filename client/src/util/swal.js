@@ -15,3 +15,13 @@ export const SwalLogout = () => (
     text: '登出成功',
   })
 )
+
+export const SwalSubmitSuccess = () => (
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: '變更完成',
+    showConfirmButton: false,
+    timer: 1500,
+  })
+)

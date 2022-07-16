@@ -21,4 +21,8 @@ export const postItemsError = (state) => (
   state.postItemsError
 )
 
+export const currentUser = (state) => (
+  state.currentUser
+)
+
 export const abc = 'abc'

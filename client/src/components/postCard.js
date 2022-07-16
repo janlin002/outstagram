@@ -1,16 +1,23 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 // import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 // import { BiMessageRounded } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import { currentUser } from '../redux/selectors'
 import '../assets/css/postCard.scss'
 import PostNoData from './postCardNoData'
 import PostImage from './postImage'
+import {
+  postComment,
+} from '../redux/actions'
 
 function PostCard({ postData }) {
+  const dispatch = useDispatch()
   // const [hitHeart, setHitHeart] = useState(false)
   const [commentText, setCommentText] = useState('')
+  const currentUsers = useSelector(currentUser)
   const navigate = useNavigate()
 
   // const handleHeartIcon = () => {
@@ -18,7 +25,13 @@ function PostCard({ postData }) {
   // }
 
   const handleSubmit = () => {
+    const value = {
+      name: currentUsers,
+      content: commentText,
+      id: postData[0]._id,
+    }
     setCommentText('')
+    dispatch(postComment(value))
   }
 
   return (
@@ -93,6 +106,7 @@ function PostCard({ postData }) {
                   )
                 }
                 <div>
+                  <p>目前使用者: {currentUsers}</p>
                   <input
                     type="text"
                     style={{ width: '100%' }}
