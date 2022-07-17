@@ -25,3 +25,20 @@ export const SwalSubmitSuccess = () => (
     timer: 1500,
   })
 )
+
+export const SwalDeleteComment = (test) => (
+  Swal.fire({
+    icon: 'warning',
+    title: 'Warning!',
+    text: '是否刪除留言?',
+    showDenyButton: false,
+    showCancelButton: true,
+    confirmButtonText: '確定',
+    cancelButtonText: '取消',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire('Saved!', '', 'success')
+      test()
+    }
+  })
+)

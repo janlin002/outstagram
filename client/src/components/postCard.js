@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 // import { BiMessageRounded } from 'react-icons/bi'
+import { ImCross } from 'react-icons/im'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
@@ -12,6 +13,9 @@ import PostImage from './postImage'
 import {
   postComment,
 } from '../redux/actions'
+import {
+  SwalDeleteComment,
+} from '../util/swal'
 
 function PostCard({ postData }) {
   const dispatch = useDispatch()
@@ -32,6 +36,14 @@ function PostCard({ postData }) {
     }
     setCommentText('')
     dispatch(postComment(value))
+  }
+
+  const test = () => {
+    console.log('123')
+  }
+
+  const handleDeleteComment = () => {
+    SwalDeleteComment(test)
   }
 
   return (
@@ -99,7 +111,19 @@ function PostCard({ postData }) {
                           <b style={{ marginRight: '10px' }}>
                             {contentItem.name}
                           </b>
-                          {contentItem.content}
+                          <div className="d-flex justify-content-between">
+                            <div>
+                              {contentItem.content}
+                            </div>
+                            <div
+                              role="button"
+                              onClick={handleDeleteComment}
+                              tabIndex={0}
+                              onKeyDown=""
+                            >
+                              <ImCross />
+                            </div>
+                          </div>
                         </p>
                       </div>
                     ))

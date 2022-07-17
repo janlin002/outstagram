@@ -18,6 +18,8 @@ import {
 
   updateUserInfoSuccess,
   updateUserInfoFailure,
+
+  postCommentSuccess,
 } from '../actions'
 
 import {
@@ -78,6 +80,8 @@ function* updateUserInfos({ payload }) {
 function* postComment({ payload }) {
   try {
     const postComment = yield call(postComments, payload)
+
+    yield put(postCommentSuccess())
   } catch (error) {
     console.error(error)
   }

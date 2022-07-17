@@ -1,17 +1,33 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 import PostCard from '../components/postCard'
-import postData from '../util/postCardFakedata.json'
+// import postData from '../util/postCardFakedata.json'
 
 import {
   postItems,
+  postCommentLoading,
+  currentUser,
 } from '../redux/selectors'
 
-function Home() {
-  const postItem = useSelector(postItems)
+import {
+  getPostItems,
+  resetPostComment,
+} from '../redux/actions'
 
-  console.log(postItem, postData, 'userInfoData')
+function Home() {
+  const dispatch = useDispatch()
+
+  const postItem = useSelector(postItems)
+  const submitLoadinbg = useSelector(postCommentLoading)
+  const user = useSelector(currentUser)
+
+  useEffect(() => {
+    if (submitLoadinbg === false && postItem) {
+      dispatch(getPostItems(user))
+      dispatch(resetPostComment())
+    }
+  }, [submitLoadinbg, postItem])
 
   return (
     <PostCard

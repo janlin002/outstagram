@@ -39,6 +39,10 @@ const defaultState = {
   postItemsError: null,
 
   currentUser: '',
+
+  postComment: [],
+  postCommentLoading: null,
+  postCommentError: null,
 }
 
 const reducer = (state = defaultState, action) => {
@@ -48,6 +52,7 @@ const reducer = (state = defaultState, action) => {
         ...state,
         name: '123',
       }
+
     case CHANGE_LOGIN_STATUS:
       return {
         ...state,
@@ -145,6 +150,22 @@ const reducer = (state = defaultState, action) => {
     case POST_COMMENT:
       return {
         ...state,
+        postCommentLoading: true,
+      }
+    case POST_COMMENT_SUCCESS:
+      return {
+        ...state,
+        postCommentLoading: false,
+      }
+    case POST_COMMENT_FAILURE:
+      return {
+        ...state,
+        postCommentLoading: false,
+      }
+    case RESET_POST_COMMENT:
+      return {
+        ...state,
+        postCommentLoading: null,
       }
     default:
       return state

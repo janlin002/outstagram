@@ -25,4 +25,8 @@ export const currentUser = (state) => (
   state.currentUser
 )
 
+export const postCommentLoading = (state) => (
+  state.postCommentLoading
+)
+
 export const abc = 'abc'

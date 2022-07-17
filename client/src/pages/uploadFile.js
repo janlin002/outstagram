@@ -7,6 +7,7 @@ function UploadFile() {
   // const dispatch = useDispatch()
   const [file, setFile] = useState({})
   const [event, setEvent] = useState({})
+  const [uploadType, setUploadType] = useState('')
 
   const handleSubmit = (values) => {
     console.log({ ...values, file })
@@ -33,6 +34,33 @@ function UploadFile() {
     }
   }
 
+  const handleUploadType = (value) => {
+    setUploadType(value)
+  }
+
+  const handleUploadUI = () => {
+    if (uploadType === 'use-file') {
+      return (
+        <input
+          type="file"
+          onChange={(e) => {
+            handleUploadFile(e)
+            setEvent(e)
+          }}
+        />
+      )
+    } if (uploadType === 'use-url') {
+      return (
+        <input
+          type="text"
+          placeholder="請輸入連結..."
+          onChange={(e) => setFile(e.target.value)}
+        />
+      )
+    }
+    return null
+  }
+
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="card-deck d-block justify-content-center mt-3">
@@ -40,7 +68,31 @@ function UploadFile() {
           <div className="card-body">
 
             {/* 圖片選取 */}
-            <label htmlFor="fileName" className="text-center">
+            <div>
+              <div>
+                <input
+                  type="radio"
+                  id="use-file"
+                  name="drone"
+                  value="use-file"
+                  onChange={(e) => handleUploadType(e.target.value)}
+                />
+                <label htmlFor="use-file">檔案上傳</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="use-url"
+                  name="drone"
+                  value="use-url"
+                  onChange={(e) => handleUploadType(e.target.value)}
+                />
+                <label htmlFor="use-url">使用連結</label>
+              </div>
+            </div>
+
+            {handleUploadUI()}
+            {/* <label htmlFor="fileName" className="text-center">
               <input
                 type="file"
                 onChange={(e) => {
@@ -50,10 +102,15 @@ function UploadFile() {
                 id="fileName"
                 nmae="fileName"
               />
-            </label>
+            </label> */}
 
-            <div style={{ width: 'auto', height: 'auto' }}>
-              <img src={file} alt="" style={{ width: '100%' }} />
+            <div>
+              {
+                (Object.keys(file).length !== 0 || file !== '') && (
+                  <img src={file} alt="" style={{ width: '100%' }} />
+                )
+              }
+
             </div>
             <div>
               {
@@ -64,14 +121,14 @@ function UploadFile() {
                 )
               }
 
-              {
+              {/* {
                 Object.keys(event).length !== 0 && (
                   Math.sqrt(
                     event?.currenttraget?.files[0],
                   ) % 1 !== 0
                     && <div className="text-center text-danger">請選擇寬度跟高度相同之照片</div>
                 )
-              }
+              } */}
             </div>
 
             {/* 圖片說明 */}
