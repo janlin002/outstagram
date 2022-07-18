@@ -9,12 +9,15 @@ import {
   postCommentLoading,
   currentUser,
   deleteCommentLoading,
+  uploadFileLoading,
+  deletePostLoading,
 } from '../redux/selectors'
 
 import {
   getPostItems,
   resetPostComment,
   resetDeleteComment,
+  getUserInfo,
 } from '../redux/actions'
 
 function Home() {
@@ -23,8 +26,19 @@ function Home() {
   const postItem = useSelector(postItems)
   const submitLoadinbg = useSelector(postCommentLoading)
   const deletLoading = useSelector(deleteCommentLoading)
+  const uploadLoading = useSelector(uploadFileLoading)
+  const deletePostItemLoading = useSelector(deletePostLoading)
   const user = useSelector(currentUser)
 
+  useEffect(() => {
+    dispatch(getUserInfo())
+  }, [])
+
+  useEffect(() => {
+    if (uploadLoading === false) {
+      dispatch(getPostItems(user))
+    }
+  }, [uploadLoading])
   useEffect(() => {
     if (
       (submitLoadinbg === false && postItem)
@@ -40,6 +54,13 @@ function Home() {
       dispatch(resetDeleteComment())
     }
   }, [deletLoading])
+
+  useEffect(() => {
+    if (deletePostItemLoading === false) {
+      dispatch(getPostItems(user))
+      dispatch(resetDeleteComment())
+    }
+  }, [deletePostItemLoading])
 
   return (
     <PostCard

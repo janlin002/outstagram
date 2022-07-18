@@ -1,18 +1,36 @@
-import React, { useState } from 'react'
-// import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom'
+
+import {
+  userInfo,
+} from '../redux/selectors'
+
+import {
+  postUploadFile,
+} from '../redux/actions'
 
 function UploadFile() {
-  // const dispatch = useDispatch()
-  const [file, setFile] = useState({})
-  const [event, setEvent] = useState({})
-  const [uploadType, setUploadType] = useState('')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
+  const [file, setFile] = useState({})
+  // const [event, setEvent] = useState({})
+  const [uploadType, setUploadType] = useState('')
+  const user = useSelector(userInfo)
+
+  // 切換上傳方式，把 File 清空
+  useEffect(() => {
+    setFile({})
+  }, [uploadType])
+
+  // 新增貼文
   const handleSubmit = (values) => {
-    console.log({ ...values, file })
     // 把 values 跟 file 一起傳到後端
-    // dispatch(postUploadFile({...values, file})
+    dispatch(postUploadFile({ ...values, file, ...user[0] }))
+    navigate('/home')
   }
 
   const formik = useFormik({
@@ -45,7 +63,7 @@ function UploadFile() {
           type="file"
           onChange={(e) => {
             handleUploadFile(e)
-            setEvent(e)
+            // setEvent(e)
           }}
         />
       )
@@ -148,12 +166,15 @@ function UploadFile() {
             </div>
 
             {/* 送出按鈕 */}
-            <div className="d-flex justify-content-center mt-3">
-              <button type="submit" className="btn btn-primary">
-                送出
-              </button>
-            </div>
-
+            {
+              (Object.keys(file).length !== 0 && file !== '') && (
+                <div className="d-flex justify-content-center mt-3">
+                  <button type="submit" className="btn btn-primary" disabled={!file}>
+                    送出
+                  </button>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>

@@ -6,24 +6,24 @@ import userData from '../util/userInfoFakedata.json'
 import CustomModal from '../components/customModal/basic'
 import UserInfoPostItem from '../components/userInfoPostItem'
 
-import {
-  getUserInfo,
-} from '../redux/actions'
+// import {
+//   getUserInfo,
+// } from '../redux/actions'
 
 import {
-  loginStatus,
+  // loginStatus,
   userInfo,
-  userInfoLoading,
+  // userInfoLoading,
 } from '../redux/selectors'
 
 function UserInfo() {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getUserInfo())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getUserInfo())
+  // }, [])
   const userInfoData = useSelector(userInfo)
-  const userInfoDataLoading = useSelector(userInfoLoading)
+  // const userInfoDataLoading = useSelector(userInfoLoading)
 
   const [modalOpen, setModalOpen] = useState(false)
   const [detailData, setDetailData] = useState({})
@@ -36,8 +36,6 @@ function UserInfo() {
     setDetailData(postItem)
     setModalOpen(true)
   }
-
-  console.log(userInfoData, userData, 'data check')
 
   return (
     userInfoData.map((item) => (

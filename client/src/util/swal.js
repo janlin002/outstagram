@@ -30,7 +30,24 @@ export const SwalDeleteComment = (delFunc) => (
   Swal.fire({
     icon: 'warning',
     title: 'Warning!',
-    text: '是否刪除留言?',
+    text: '是否要刪除留言?',
+    showDenyButton: false,
+    showCancelButton: true,
+    confirmButtonText: '確定',
+    cancelButtonText: '取消',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire('Saved!', '', 'success')
+      delFunc()
+    }
+  })
+)
+
+export const SwalDeletePost = (delFunc) => (
+  Swal.fire({
+    icon: 'warning',
+    title: 'Warning!',
+    text: '是否要刪除貼文?',
     showDenyButton: false,
     showCancelButton: true,
     confirmButtonText: '確定',

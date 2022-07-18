@@ -33,4 +33,12 @@ export const deleteCommentLoading = (state) => (
   state.deleteCommentLoading
 )
 
+export const uploadFileLoading = (state) => (
+  state.uploadFileLoading
+)
+
+export const deletePostLoading = (state) => (
+  state.deletePostLoading
+)
+
 export const abc = 'abc'

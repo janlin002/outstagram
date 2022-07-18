@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 // import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 // import { BiMessageRounded } from 'react-icons/bi'
 import { ImCross } from 'react-icons/im'
+import { AiOutlineDelete } from 'react-icons/ai'
+
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
@@ -14,10 +16,12 @@ import PostImage from './postImage'
 import {
   postComment,
   deleteComment,
+  deletePostItem,
 } from '../redux/actions'
 
 import {
   SwalDeleteComment,
+  SwalDeletePost,
 } from '../util/swal'
 
 function PostCard({ postData }) {
@@ -49,6 +53,15 @@ function PostCard({ postData }) {
     SwalDeleteComment(() => deleteComments(deleteItem))
   }
 
+  const deletePost = (value) => {
+    dispatch(deletePostItem(value))
+  }
+
+  // 刪除貼文
+  const handleDeletePost = (value) => {
+    SwalDeletePost(() => deletePost(value))
+  }
+
   return (
     postData.length === 0 ? <PostNoData /> : (
       postData.map((item) => (
@@ -56,19 +69,33 @@ function PostCard({ postData }) {
           <div className="card-deck d-block justify-content-center mt-3">
             <div className="card col-6 m-auto">
               <div className="card-body">
-                <div className="d-flex mb-3">
-                  <img className="card-img-top card-image" src={item.avatar} alt="CardImage" />
-                  <div className="d-flex justify-content-center" style={{ marginLeft: '10px' }}>
-                    <div
-                      role="button"
-                      className="d-flex justify-content-center card-name"
-                      onClick={() => navigate('/userInfo')}
-                      onKeyDown={() => navigate('/userInfo')}
-                      tabIndex={0}
-                    >
-                      {item.userName}
+                <div className="d-flex justify-content-between mb-3">
+                  <div className="d-flex">
+                    <img className="card-img-top card-image" src={item.avatar} alt="CardImage" />
+                    <div className="d-flex justify-content-center" style={{ marginLeft: '10px' }}>
+                      <div
+                        role="button"
+                        className="d-flex justify-content-center card-name"
+                        onClick={() => navigate('/userInfo')}
+                        onKeyDown={() => navigate('/userInfo')}
+                        tabIndex={0}
+                      >
+                        {item.userName}
+                      </div>
                     </div>
                   </div>
+
+                  <div
+                    role="button"
+                    onClick={() => handleDeletePost(item._id)}
+                    tabIndex={0}
+                    onKeyDown=""
+                  >
+                    <AiOutlineDelete
+                      size={20}
+                    />
+                  </div>
+
                 </div>
                 <PostImage imageData={item.postImage} />
                 {/* <div className="d-flex">
@@ -102,14 +129,23 @@ function PostCard({ postData }) {
                   </h5>
                 </div> */}
 
-                <h3 className="text-center m-3">留言板</h3>
+                <div>
+                  <div className="d-flex mt-3">
+                    <b style={{ paddingRight: '10px' }}>
+                      {item.userName}
+                    </b>
+                    <p>{item.info}</p>
+                  </div>
+                </div>
+
+                <h3 className="text-center">留言板</h3>
 
                 {
                   item.postContent.length === 0 ? (
                     <div className="mt-3 mb-3">目前沒有留言...</div>
                   ) : (
                     item.postContent.map((contentItem) => (
-                      <div className="d-block">
+                      <div className="d-block" style={{ borderBottom: '1px solid #e5e5e5' }}>
                         <p className="card-text">
                           <b style={{ marginRight: '10px' }}>
                             {contentItem.name}

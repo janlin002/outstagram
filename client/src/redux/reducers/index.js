@@ -29,6 +29,16 @@ import {
   DELETE_COMMENT_SUCCESS,
   DELETE_COMMENT_FAILURE,
   RESET_DELETE_COMMENT,
+
+  POST_UPLOAD_FILE,
+  POST_UPLOAD_FILE_SUCCESS,
+  POST_UPLOAD_FILE_FAILURE,
+  RESET_UPLOAD_FILE,
+
+  DELETE_POST_ITEM,
+  DELETE_POST_ITEM_SUCCESS,
+  DELETE_POST_ITEM_FAILURE,
+  RESET_DELETE_POST_ITEM,
 } from '../ActionTypes'
 
 const defaultState = {
@@ -51,6 +61,12 @@ const defaultState = {
 
   deleteCommentLoading: null,
   deleteCommentError: null,
+
+  uploadFileLoading: null,
+  uploadFileError: null,
+
+  deletePostLoading: null,
+  deletePostError: null,
 }
 
 const reducer = (state = defaultState, action) => {
@@ -96,7 +112,7 @@ const reducer = (state = defaultState, action) => {
     case GET_POST_ITEMS:
       return {
         ...state,
-        postItems: [],
+        // postItems: [],
         postItemsLoading: true,
       }
     case GET_POST_ITEMS_SUCCESS:
@@ -199,6 +215,56 @@ const reducer = (state = defaultState, action) => {
         ...state,
         deleteCommentLoading: null,
         deleteCommentError: null,
+      }
+
+    case POST_UPLOAD_FILE:
+      return {
+        ...state,
+        uploadFileLoading: true,
+        uploadFileError: null,
+      }
+    case POST_UPLOAD_FILE_SUCCESS:
+      return {
+        ...state,
+        uploadFileLoading: false,
+        uploadFileError: null,
+      }
+    case POST_UPLOAD_FILE_FAILURE:
+      return {
+        ...state,
+        uploadFileLoading: false,
+        uploadFileError: action.error,
+      }
+    case RESET_UPLOAD_FILE:
+      return {
+        ...state,
+        uploadFileLoading: null,
+        uploadFileError: null,
+      }
+
+    case DELETE_POST_ITEM:
+      return {
+        ...state,
+        deletePostLoading: true,
+        deletePostError: null,
+      }
+    case DELETE_POST_ITEM_SUCCESS:
+      return {
+        ...state,
+        deletePostLoading: false,
+        deletePostError: null,
+      }
+    case DELETE_POST_ITEM_FAILURE:
+      return {
+        ...state,
+        deletePostLoading: false,
+        deletePostError: action.error,
+      }
+    case RESET_DELETE_POST_ITEM:
+      return {
+        ...state,
+        deletePostLoading: null,
+        deletePostError: null,
       }
     default:
       return state

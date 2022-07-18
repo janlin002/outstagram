@@ -3,15 +3,19 @@ import mongoose from "mongoose";
 const postSchema = mongoose.Schema({
     avatar: String,
     userName: String,
-    postImage: {
-        image: String,
-    },
+    postImage: [
+        {
+            image: String,
+        }
+    ],
     postContent: [
         {
             name: String,
             content: String
         }
-    ]
+    ],
+    postId: String,
+    info: String,
 })
 
 var PostItems = mongoose.model('PostItems', postSchema)

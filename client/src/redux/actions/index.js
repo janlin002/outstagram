@@ -29,6 +29,16 @@ import {
   DELETE_COMMENT_SUCCESS,
   DELETE_COMMENT_FAILURE,
   RESET_DELETE_COMMENT,
+
+  POST_UPLOAD_FILE,
+  POST_UPLOAD_FILE_SUCCESS,
+  POST_UPLOAD_FILE_FAILURE,
+  RESET_UPLOAD_FILE,
+
+  DELETE_POST_ITEM,
+  DELETE_POST_ITEM_SUCCESS,
+  DELETE_POST_ITEM_FAILURE,
+  RESET_DELETE_POST_ITEM,
 } from '../ActionTypes'
 
 export const test = ({ payload }) => ({
@@ -132,5 +142,39 @@ export const deleteCommentFailure = (payload) => ({
 })
 export const resetDeleteComment = (payload) => ({
   type: RESET_DELETE_COMMENT,
+  payload,
+})
+
+export const postUploadFile = (payload) => ({
+  type: POST_UPLOAD_FILE,
+  payload,
+})
+export const postUploadFileSuccess = (payload) => ({
+  type: POST_UPLOAD_FILE_SUCCESS,
+  payload,
+})
+export const postUploadFileFailure = (payload) => ({
+  type: POST_UPLOAD_FILE_FAILURE,
+  payload,
+})
+export const resetUploadFile = (payload) => ({
+  type: RESET_UPLOAD_FILE,
+  payload,
+})
+
+export const deletePostItem = (payload) => ({
+  type: DELETE_POST_ITEM,
+  payload,
+})
+export const deletePostItemSuccess = (payload) => ({
+  type: DELETE_POST_ITEM_SUCCESS,
+  payload,
+})
+export const deletePostItemFailure = (payload) => ({
+  type: DELETE_POST_ITEM_FAILURE,
+  payload,
+})
+export const resetDeletePostItem = (payload) => ({
+  type: RESET_DELETE_POST_ITEM,
   payload,
 })
