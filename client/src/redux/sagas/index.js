@@ -7,6 +7,7 @@ import {
   GET_POST_ITEMS,
   UPDATE_USER_INFO,
   POST_COMMENT,
+  DELETE_COMMENT,
 } from '../ActionTypes'
 
 import {
@@ -20,6 +21,9 @@ import {
   updateUserInfoFailure,
 
   postCommentSuccess,
+
+  deleteCommentSuccess,
+  deleteCommentFailure,
 } from '../actions'
 
 import {
@@ -27,6 +31,7 @@ import {
   fetchPosts,
   updateUserInfo,
   postComments,
+  deleteComment,
 } from '../../../api'
 
 function* getUserInfo() {
@@ -87,11 +92,23 @@ function* postComment({ payload }) {
   }
 }
 
+function* deleteCommentSaga({ payload }) {
+  console.log(payload, 'saga')
+  try {
+    yield call(deleteComment, payload)
+
+    yield put(deleteCommentSuccess())
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 function* mySaga() {
   yield takeLatest(GET_USER_INFO, getUserInfo)
   yield takeLatest(GET_POST_ITEMS, getPostItems)
   yield takeLatest(UPDATE_USER_INFO, updateUserInfos)
   yield takeLatest(POST_COMMENT, postComment)
+  yield takeLatest(DELETE_COMMENT, deleteCommentSaga)
 }
 
 export default mySaga

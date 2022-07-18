@@ -26,7 +26,7 @@ export const SwalSubmitSuccess = () => (
   })
 )
 
-export const SwalDeleteComment = (test) => (
+export const SwalDeleteComment = (delFunc) => (
   Swal.fire({
     icon: 'warning',
     title: 'Warning!',
@@ -38,7 +38,7 @@ export const SwalDeleteComment = (test) => (
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire('Saved!', '', 'success')
-      test()
+      delFunc()
     }
   })
 )

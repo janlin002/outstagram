@@ -24,6 +24,11 @@ import {
   POST_COMMENT_SUCCESS,
   POST_COMMENT_FAILURE,
   RESET_POST_COMMENT,
+
+  DELETE_COMMENT,
+  DELETE_COMMENT_SUCCESS,
+  DELETE_COMMENT_FAILURE,
+  RESET_DELETE_COMMENT,
 } from '../ActionTypes'
 
 export const test = ({ payload }) => ({
@@ -110,5 +115,22 @@ export const postCommentFailure = (payload) => ({
 })
 export const resetPostComment = (payload) => ({
   type: RESET_POST_COMMENT,
+  payload,
+})
+
+export const deleteComment = (payload) => ({
+  type: DELETE_COMMENT,
+  payload,
+})
+export const deleteCommentSuccess = (payload) => ({
+  type: DELETE_COMMENT_SUCCESS,
+  payload,
+})
+export const deleteCommentFailure = (payload) => ({
+  type: DELETE_COMMENT_FAILURE,
+  payload,
+})
+export const resetDeleteComment = (payload) => ({
+  type: RESET_DELETE_COMMENT,
   payload,
 })

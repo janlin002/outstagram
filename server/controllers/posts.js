@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose'
 
 import PostItems from "../modules/postMessage.js"
 
@@ -45,6 +46,31 @@ export const postComment = async(req, res) =>{
         res.status(200).json(PostItem)
     }catch(error){
         res.status(404).json({ message: error.message})
+    }
+}
+
+export const deleteComment = async(req, res) => {
+    try {
+        const PostItem = await PostItems.find()
+
+       const deleteItem = await PostItems.update(
+        {
+            // '_id': req.body._id
+        },
+        {
+            $pull: {
+                postContent: {
+                    name: req.body.name,
+                    content: req.body.content,
+                    _id: mongoose.Types.ObjectId(req.body._id)
+                }
+            }
+        }
+       )
+
+       res.status(200).json(PostItem)
+    }catch(error){
+        res.status(404).json({ message: error.message })
     }
 }
 

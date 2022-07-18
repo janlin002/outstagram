@@ -10,9 +10,12 @@ import { currentUser } from '../redux/selectors'
 import '../assets/css/postCard.scss'
 import PostNoData from './postCardNoData'
 import PostImage from './postImage'
+
 import {
   postComment,
+  deleteComment,
 } from '../redux/actions'
+
 import {
   SwalDeleteComment,
 } from '../util/swal'
@@ -38,12 +41,12 @@ function PostCard({ postData }) {
     dispatch(postComment(value))
   }
 
-  const test = () => {
-    console.log('123')
+  const deleteComments = (value) => {
+    dispatch(deleteComment(value))
   }
 
-  const handleDeleteComment = () => {
-    SwalDeleteComment(test)
+  const handleDeleteComment = (deleteItem) => {
+    SwalDeleteComment(() => deleteComments(deleteItem))
   }
 
   return (
@@ -117,7 +120,7 @@ function PostCard({ postData }) {
                             </div>
                             <div
                               role="button"
-                              onClick={handleDeleteComment}
+                              onClick={() => handleDeleteComment(contentItem)}
                               tabIndex={0}
                               onKeyDown=""
                             >

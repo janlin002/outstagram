@@ -29,4 +29,8 @@ export const postCommentLoading = (state) => (
   state.postCommentLoading
 )
 
+export const deleteCommentLoading = (state) => (
+  state.deleteCommentLoading
+)
+
 export const abc = 'abc'

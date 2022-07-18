@@ -24,6 +24,11 @@ import {
   POST_COMMENT_SUCCESS,
   POST_COMMENT_FAILURE,
   RESET_POST_COMMENT,
+
+  DELETE_COMMENT,
+  DELETE_COMMENT_SUCCESS,
+  DELETE_COMMENT_FAILURE,
+  RESET_DELETE_COMMENT,
 } from '../ActionTypes'
 
 const defaultState = {
@@ -43,6 +48,9 @@ const defaultState = {
   postComment: [],
   postCommentLoading: null,
   postCommentError: null,
+
+  deleteCommentLoading: null,
+  deleteCommentError: null,
 }
 
 const reducer = (state = defaultState, action) => {
@@ -166,6 +174,31 @@ const reducer = (state = defaultState, action) => {
       return {
         ...state,
         postCommentLoading: null,
+      }
+
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        deleteCommentLoading: true,
+        deleteCommentError: null,
+      }
+    case DELETE_COMMENT_SUCCESS:
+      return {
+        ...state,
+        deleteCommentLoading: false,
+        deleteCommentError: null,
+      }
+    case DELETE_COMMENT_FAILURE:
+      return {
+        ...state,
+        deleteCommentLoading: false,
+        deleteCommentError: action.error,
+      }
+    case RESET_DELETE_COMMENT:
+      return {
+        ...state,
+        deleteCommentLoading: null,
+        deleteCommentError: null,
       }
     default:
       return state
