@@ -11,3 +11,4 @@ export const deletePost = (deleteItem) => axios.delete(`${postUrl}/delete-post`,
 
 export const updateUserInfo = (changeData) => axios.post(userUrl, changeData)
 export const fetchUser = () => axios.get(userUrl)
+export const createNewUser = (userInfo) => axios.post(`${userUrl}/new-user`, userInfo)

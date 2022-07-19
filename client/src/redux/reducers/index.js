@@ -39,6 +39,11 @@ import {
   DELETE_POST_ITEM_SUCCESS,
   DELETE_POST_ITEM_FAILURE,
   RESET_DELETE_POST_ITEM,
+
+  POST_NEW_USER,
+  POST_NEW_USER_SUCCESS,
+  POST_NEW_USER_FAILURE,
+  RESET_POST_NEW_USER,
 } from '../ActionTypes'
 
 const defaultState = {
@@ -67,6 +72,9 @@ const defaultState = {
 
   deletePostLoading: null,
   deletePostError: null,
+
+  postNewUserLoading: null,
+  postNewUserError: null,
 }
 
 const reducer = (state = defaultState, action) => {
@@ -265,6 +273,31 @@ const reducer = (state = defaultState, action) => {
         ...state,
         deletePostLoading: null,
         deletePostError: null,
+      }
+
+    case POST_NEW_USER:
+      return {
+        ...state,
+        postNewUserLoading: true,
+        postNewUserError: null,
+      }
+    case POST_NEW_USER_SUCCESS:
+      return {
+        ...state,
+        postNewUserLoading: false,
+        postNewUserError: null,
+      }
+    case POST_NEW_USER_FAILURE:
+      return {
+        ...state,
+        postNewUserLoading: false,
+        postNewUserError: action.error,
+      }
+    case RESET_POST_NEW_USER:
+      return {
+        ...state,
+        postNewUserLoading: null,
+        postNewUserError: null,
       }
     default:
       return state

@@ -25,7 +25,6 @@ function Headers() {
   const navigate = useNavigate()
   const userLoginStatus = useSelector(loginStatus)
 
-  // TODO 開發完畢要打開
   useEffect(() => {
     if (userLoginStatus === false && pathname !== '/') {
       SwalAlert()

@@ -1,25 +1,77 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { BiUser } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 
 import loginImage from '../assets/image/20944201.jpg'
 import {
+  getUserInfo,
   changeLoginStatus,
   getPostItems,
   getCurrentUser,
 } from '../redux/actions'
 
+import {
+  currentUser,
+  loginStatus,
+  postItems,
+  userInfo,
+} from '../redux/selectors'
+
+import {
+  SwalUnKnowUser,
+} from '../util/swal'
+
 function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const [cusUser, seCustUser] = useState('')
+
+  const currentUsers = useSelector(currentUser)
+  const userLoginStatus = useSelector(loginStatus)
+  const postItem = useSelector(postItems)
+  const userInfoData = useSelector(userInfo)
+
+  useEffect(() => {
+    dispatch(getUserInfo())
+  }, [])
+
+  useEffect(() => {
+    if (currentUsers !== '' && userLoginStatus === true) {
+      navigate('/home')
+    }
+  }, [currentUsers, userLoginStatus])
 
   const handleLoginClick = (user) => {
     dispatch(changeLoginStatus(true))
     dispatch(getCurrentUser(user))
     dispatch(getPostItems(user))
-    navigate('/home')
+  }
+
+  const handleCreateUser = () => {
+    navigate('/create-user')
+    dispatch(changeLoginStatus(true))
+  }
+
+  const handleCusUserLogin = (value) => {
+    seCustUser(value)
+  }
+
+  console.log(cusUser, 'user')
+
+  const handleUserCheck = () => {
+    dispatch(getCurrentUser(cusUser))
+    userInfoData.map((item) => {
+      if (item.name === cusUser) {
+        dispatch(changeLoginStatus(true))
+        dispatch(getPostItems(cusUser))
+      } else {
+        SwalUnKnowUser(() => seCustUser(''))
+      }
+      return null
+    })
   }
   return (
     <div className="card-deck mt-5">
@@ -38,7 +90,7 @@ function Login() {
               onClick={() => handleLoginClick('user1')}
             >
               <BiUser />
-              USER-A
+              USER-1
             </button>
             <button
               className="btn btn-outline-primary m-2"
@@ -46,7 +98,7 @@ function Login() {
               onClick={() => handleLoginClick('user2')}
             >
               <BiUser />
-              USER-B
+              USER-2
             </button>
             <button
               className="btn btn-outline-primary m-2"
@@ -54,8 +106,29 @@ function Login() {
               onClick={() => handleLoginClick('user3')}
             >
               <BiUser />
-              USER-C
+              USER-3
             </button>
+            <button
+              className="btn btn-outline-primary m-2"
+              type="button"
+              onClick={() => handleCreateUser()}
+            >
+              新增使用者
+            </button>
+            <div>
+              <input
+                type="text"
+                onChange={(e) => handleCusUserLogin(e.target.value)}
+                value={cusUser}
+              />
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => handleUserCheck()}
+              >
+                確定進入
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -64,3 +137,6 @@ function Login() {
 }
 
 export default Login
+
+// 使用名稱登入，或是新增使用者
+// 新增非使用者，擋掉邏輯

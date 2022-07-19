@@ -68,7 +68,7 @@ function PostCard({ postData }) {
         <div className="post-card-style">
           <div className="card-deck d-block justify-content-center mt-3">
             <div className="card col-6 m-auto">
-              <div className="card-body">
+              <div className="card-body post-background-color">
                 <div className="d-flex justify-content-between mb-3">
                   <div className="d-flex">
                     <img className="card-img-top card-image" src={item.avatar} alt="CardImage" />
@@ -199,5 +199,3 @@ export default PostCard
 PostCard.propTypes = {
   postData: PropTypes.instanceOf(Object).isRequired,
 }
-
-// TODO 按讚需要做分辨，不然全部都會勾起來

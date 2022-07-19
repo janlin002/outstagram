@@ -22,20 +22,22 @@ function UserInfoPostItem({ detailData, userData }) {
     setCommentText('')
   }
 
+  console.log(detailData, 'item')
+
   return (
     <div className="post-card-style">
       <div className="card-deck d-block justify-content-center mt-3">
         <div className="card col-6 m-auto">
           <div className="card-body">
             <div className="d-flex mb-3">
-              <img className="card-img-top card-image" src={userData[0].avatar} alt="CardImage" />
+              <img className="card-img-top card-image" src={detailData.avatar} alt="CardImage" />
               <div className="d-flex justify-content-center" style={{ marginLeft: '10px' }}>
                 <div>
-                  {userData[0].name}
+                  {detailData.userName}
                 </div>
               </div>
             </div>
-            <PostImage imageData={detailData.image} />
+            <PostImage imageData={detailData.postImage} />
             {/* <img className="card-img-top" src={item.postImage} alt="CardImage" /> */}
 
             {/* 按讚功能 */}
@@ -73,10 +75,10 @@ function UserInfoPostItem({ detailData, userData }) {
             <h3 className="text-center m-3">留言板</h3>
 
             {
-                detailData.comment.length === 0 ? (
+                detailData.postContent.length === 0 ? (
                   <div className="mt-3 mb-3">目前沒有留言...</div>
                 ) : (
-                  detailData.comment.map((contentItem) => (
+                  detailData.postContent.map((contentItem) => (
                     <div className="d-block">
                       <p className="card-text">
                         <b style={{ marginRight: '10px' }}>

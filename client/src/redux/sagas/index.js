@@ -10,6 +10,7 @@ import {
   DELETE_COMMENT,
   POST_UPLOAD_FILE,
   DELETE_POST_ITEM,
+  POST_NEW_USER,
 } from '../ActionTypes'
 
 import {
@@ -31,6 +32,9 @@ import {
   deletePostItemFailure,
 
   postUploadFileSuccess,
+
+  postNewUserSuccess,
+  postNewUserFailure,
 } from '../actions'
 
 import {
@@ -41,6 +45,7 @@ import {
   deleteComment,
   postFile,
   deletePost,
+  createNewUser,
 } from '../../../api'
 
 function* getUserInfo() {
@@ -138,7 +143,6 @@ function* deletePostItemSaga({ payload }) {
     id: payload,
   }
 
-  console.log(postValue, 'saga')
   try {
     yield call(deletePost, postValue)
 
@@ -152,6 +156,20 @@ function* deletePostItemSaga({ payload }) {
   }
 }
 
+function* postNewUserSaga({ payload }) {
+  try {
+    yield call(createNewUser, payload)
+
+    yield put(postNewUserSuccess())
+  } catch (error) {
+    console.error(error)
+
+    yield put(postNewUserFailure({
+      message: error.message,
+    }))
+  }
+}
+
 function* mySaga() {
   yield takeLatest(GET_USER_INFO, getUserInfo)
   yield takeLatest(GET_POST_ITEMS, getPostItems)
@@ -160,6 +178,7 @@ function* mySaga() {
   yield takeLatest(DELETE_COMMENT, deleteCommentSaga)
   yield takeLatest(POST_UPLOAD_FILE, postUploadFileSaga)
   yield takeLatest(DELETE_POST_ITEM, deletePostItemSaga)
+  yield takeLatest(POST_NEW_USER, postNewUserSaga)
 }
 
 export default mySaga

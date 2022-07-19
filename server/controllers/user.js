@@ -35,4 +35,20 @@ export const updateUser = async(req, res) => {
     }
 }
 
+export const createNewUser = async(req, res) => {
+    const { name, avatar, info, popular } = req.body
+
+    const newUser = new userInfo({
+        name, avatar, info, popular
+    })
+
+    try{
+        await newUser.save()
+
+        res.status(201).json(newUser);
+    }catch(error){
+        res.status(404).json({message: error.message})
+    }
+}
+
 export default router
