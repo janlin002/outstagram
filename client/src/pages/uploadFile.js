@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import {
   userInfo,
+  currentUser,
 } from '../redux/selectors'
 
 import {
@@ -20,6 +21,7 @@ function UploadFile() {
   // const [event, setEvent] = useState({})
   const [uploadType, setUploadType] = useState('')
   const user = useSelector(userInfo)
+  const currentUsers = useSelector(currentUser)
 
   // 切換上傳方式，把 File 清空
   useEffect(() => {
@@ -29,7 +31,7 @@ function UploadFile() {
   // 新增貼文
   const handleSubmit = (values) => {
     // 把 values 跟 file 一起傳到後端
-    dispatch(postUploadFile({ ...values, file, ...user[0] }))
+    dispatch(postUploadFile({ ...values, file, name: currentUsers }))
     navigate('/home')
   }
 

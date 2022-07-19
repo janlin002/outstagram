@@ -7,6 +7,7 @@ const postItem = lazy(() => import('Pages/postItem'))
 const uploadFile = lazy(() => import('Pages/uploadFile'))
 const setting = lazy(() => import('Pages/settings'))
 const CreateUser = lazy(() => import('Pages/createUser'))
+const UserControl = lazy(() => import('Pages/userControl'))
 
 const router = [
   {
@@ -36,6 +37,10 @@ const router = [
   {
     path: '/create-user',
     Child: CreateUser,
+  },
+  {
+    path: '/user-control',
+    Child: UserControl,
   },
 ]
 

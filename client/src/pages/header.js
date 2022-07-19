@@ -6,7 +6,7 @@ import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { AiOutlineHome, AiOutlineSetting } from 'react-icons/ai'
 import { GoDiffAdded } from 'react-icons/go'
 import { BiUserCircle } from 'react-icons/bi'
-// import { MdPostAdd } from 'react-icons/md'
+import { BsPeople } from 'react-icons/bs'
 import { FiLogOut } from 'react-icons/fi'
 
 import { SwalAlert, SwalLogout } from '../util/swal'
@@ -69,6 +69,11 @@ function Headers() {
           <Link className="navbar-brand" to="/settings">
             <AiOutlineSetting
               style={pathname === '/settings' ? { color: 'red' } : ''}
+            />
+          </Link>
+          <Link className="navbar-brand" to="/user-control">
+            <BsPeople
+              style={pathname === '/user-control' ? { color: 'red' } : ''}
             />
           </Link>
           <Link className="navbar-brand" to="/userInfo">

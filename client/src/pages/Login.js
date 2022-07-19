@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { BiUser } from 'react-icons/bi'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 import loginImage from '../assets/image/20944201.jpg'
 import {
@@ -26,6 +26,7 @@ import {
 function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { pathname } = useLocation()
 
   const [cusUser, seCustUser] = useState('')
 
@@ -59,19 +60,17 @@ function Login() {
     seCustUser(value)
   }
 
-  console.log(cusUser, 'user')
-
   const handleUserCheck = () => {
-    dispatch(getCurrentUser(cusUser))
-    userInfoData.map((item) => {
-      if (item.name === cusUser) {
-        dispatch(changeLoginStatus(true))
-        dispatch(getPostItems(cusUser))
-      } else {
-        SwalUnKnowUser(() => seCustUser(''))
-      }
-      return null
-    })
+    const userCheck = userInfoData.find((item) => item.name === cusUser)
+
+    if (userCheck !== undefined) {
+      dispatch(getCurrentUser(cusUser))
+      dispatch(changeLoginStatus(true))
+      dispatch(getPostItems(cusUser))
+    }
+    if (userCheck === undefined) {
+      SwalUnKnowUser(() => seCustUser(''))
+    }
   }
   return (
     <div className="card-deck mt-5">
@@ -124,7 +123,7 @@ function Login() {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={() => handleUserCheck()}
+                onClick={handleUserCheck}
               >
                 確定進入
               </button>
