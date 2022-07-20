@@ -90,6 +90,5 @@ UploadImage.propTypes = {
   setFile: PropTypes.func.isRequired,
 }
 
-// 上傳圖片の共用Component
 // setFile 透過 props 傳遞
 // 加入radio，去選則要用網址，還是本地檔案

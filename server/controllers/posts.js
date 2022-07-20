@@ -7,19 +7,10 @@ const router = express.Router();
 
 // 拿資料
 export const getPosts = async(req, res)=>{
-    const userid = req.body.userID
     try{
-        const PostItem = await PostItems.find() 
-
-        const splitItem = []
-
-        PostItem.map((item)=>{
-            if(item.userName !== userid){
-                splitItem.push(item)
-            }
-        })
-
-        res.status(200).json(splitItem)
+        const PostItem = await PostItems.find()
+        
+        res.status(200).json(PostItem)
     }catch(error){
         res.status(404).json({ message: error.message})
     }

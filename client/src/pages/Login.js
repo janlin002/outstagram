@@ -74,60 +74,63 @@ function Login() {
   }
   return (
     <div className="card-deck mt-5">
-      <div className="card col-6 m-auto">
+      <div className="card col-lg-7 col-sm-10 m-auto">
         <div className="card-body text-center">
           <img
             src={loginImage}
             alt=""
             style={{ width: '60%' }}
           />
-          <div>請選擇一個使用者</div>
+          <div>請輸入使用者名稱</div>
           <div>
-            <button
+            {/* <button
               className="btn btn-outline-primary m-2"
               type="button"
               onClick={() => handleLoginClick('user1')}
             >
               <BiUser />
               USER-1
-            </button>
-            <button
+            </button> */}
+            {/* <button
               className="btn btn-outline-primary m-2"
               type="button"
               onClick={() => handleLoginClick('user2')}
             >
               <BiUser />
               USER-2
-            </button>
-            <button
+            </button> */}
+            {/* <button
               className="btn btn-outline-primary m-2"
               type="button"
               onClick={() => handleLoginClick('user3')}
             >
               <BiUser />
               USER-3
-            </button>
-            <button
-              className="btn btn-outline-primary m-2"
-              type="button"
-              onClick={() => handleCreateUser()}
-            >
-              新增使用者
-            </button>
+            </button> */}
             <div>
-              <input
-                type="text"
-                onChange={(e) => handleCusUserLogin(e.target.value)}
-                value={cusUser}
-              />
+              <div>
+                <input
+                  type="text"
+                  onChange={(e) => handleCusUserLogin(e.target.value)}
+                  value={cusUser}
+                />
+              </div>
+
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-outline-primary mt-2"
                 onClick={handleUserCheck}
               >
                 確定進入
               </button>
             </div>
+            <button
+              className="btn btn-outline-danger m-2"
+              type="button"
+              onClick={() => handleCreateUser()}
+            >
+              新增使用者
+            </button>
           </div>
         </div>
       </div>

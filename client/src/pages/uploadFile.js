@@ -12,6 +12,7 @@ import {
 import {
   postUploadFile,
 } from '../redux/actions'
+import UploadImage from '../components/uploadImage'
 
 function UploadFile() {
   const dispatch = useDispatch()
@@ -30,8 +31,14 @@ function UploadFile() {
 
   // 新增貼文
   const handleSubmit = (values) => {
-    // 把 values 跟 file 一起傳到後端
-    dispatch(postUploadFile({ ...values, file, name: currentUsers }))
+    const currentUserInfo = user.find((item) => item.name === currentUsers)
+
+    dispatch(postUploadFile({
+      ...values,
+      file,
+      name: currentUsers,
+      avatar: currentUserInfo.avatar,
+    }))
     navigate('/home')
   }
 
@@ -45,93 +52,19 @@ function UploadFile() {
     onSubmit: handleSubmit,
   })
 
-  const handleUploadFile = (e) => {
-    const uploadFile = e.target.files
-    if (uploadFile) {
-      const binaryData = []
-      binaryData.push(uploadFile[0])
-      setFile(URL.createObjectURL(new Blob(binaryData)))
-    }
-  }
-
-  const handleUploadType = (value) => {
-    setUploadType(value)
-  }
-
-  const handleUploadUI = () => {
-    if (uploadType === 'use-file') {
-      return (
-        <input
-          type="file"
-          onChange={(e) => {
-            handleUploadFile(e)
-            // setEvent(e)
-          }}
-        />
-      )
-    } if (uploadType === 'use-url') {
-      return (
-        <input
-          type="text"
-          placeholder="請輸入連結..."
-          onChange={(e) => setFile(e.target.value)}
-        />
-      )
-    }
-    return null
-  }
-
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="card-deck d-block justify-content-center mt-3">
-        <div className="card col-6 m-auto">
-          <div className="card-body">
+        <div className="card col-lg-7 col-sm-10 m-auto">
+          <div className="card-body post-background-color">
 
             {/* 圖片選取 */}
-            <div>
-              <div>
-                <input
-                  type="radio"
-                  id="use-file"
-                  name="drone"
-                  value="use-file"
-                  onChange={(e) => handleUploadType(e.target.value)}
-                />
-                <label htmlFor="use-file">檔案上傳</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="use-url"
-                  name="drone"
-                  value="use-url"
-                  onChange={(e) => handleUploadType(e.target.value)}
-                />
-                <label htmlFor="use-url">使用連結</label>
-              </div>
-            </div>
-
-            {handleUploadUI()}
-            {/* <label htmlFor="fileName" className="text-center">
-              <input
-                type="file"
-                onChange={(e) => {
-                  handleUploadFile(e)
-                  setEvent(e)
-                }}
-                id="fileName"
-                nmae="fileName"
-              />
-            </label> */}
-
-            <div>
-              {
-                (Object.keys(file).length !== 0 || file !== '') && (
-                  <img src={file} alt="" style={{ width: '100%' }} />
-                )
-              }
-
-            </div>
+            <UploadImage
+              file={file}
+              setFile={setFile}
+              uploadType={uploadType}
+              setUploadType={setUploadType}
+            />
             <div>
               {
                 Object.keys(file).length === 0 && (
