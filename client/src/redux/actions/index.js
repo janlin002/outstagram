@@ -44,6 +44,11 @@ import {
   POST_NEW_USER_SUCCESS,
   POST_NEW_USER_FAILURE,
   RESET_POST_NEW_USER,
+
+  DELETE_USER,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAILURE,
+  RESET_DELETE_USER,
 } from '../ActionTypes'
 
 export const test = ({ payload }) => ({
@@ -198,5 +203,22 @@ export const postNewUserFailure = (payload) => ({
 })
 export const resetPostNewUser = (payload) => ({
   type: RESET_POST_NEW_USER,
+  payload,
+})
+
+export const deleteUser = (payload) => ({
+  type: DELETE_USER,
+  payload,
+})
+export const deleteUserSuccess = (payload) => ({
+  type: DELETE_USER_SUCCESS,
+  payload,
+})
+export const deleteUserFailure = (payload) => ({
+  type: DELETE_USER_FAILURE,
+  payload,
+})
+export const resetDeleteUser = (payload) => ({
+  type: RESET_DELETE_USER,
   payload,
 })

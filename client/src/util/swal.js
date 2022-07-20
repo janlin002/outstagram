@@ -92,3 +92,19 @@ export const SwalUnKnowUser = (clearFunc) => (
     }
   })
 )
+
+export const SwalDeleteUserCheck = (delFunc) => (
+  Swal.fire({
+    icon: 'warning',
+    title: '刪除使用者',
+    text: '請確認是否刪除該使用者，一但刪除就無法還原!',
+    showDenyButton: false,
+    showCancelButton: true,
+    confirmButtonText: '確定',
+    cancelButtonText: '取消',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      delFunc()
+    }
+  })
+)

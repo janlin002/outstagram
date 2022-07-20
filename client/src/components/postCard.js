@@ -8,7 +8,7 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import { currentUser } from '../redux/selectors'
+import { currentUser, userInfo } from '../redux/selectors'
 import '../assets/css/postCard.scss'
 import PostNoData from './postCardNoData'
 import PostImage from './postImage'
@@ -30,6 +30,13 @@ function PostCard({ postData }) {
   const [commentText, setCommentText] = useState('')
   const currentUsers = useSelector(currentUser)
   const navigate = useNavigate()
+  const userInfoData = useSelector(userInfo)
+
+  console.log(currentUsers, userInfoData, 'currentUsers')
+
+  const normalData = userInfoData.find((item) => item.name === currentUsers)
+
+  console.log(normalData, postData, 'normalData')
 
   // const handleHeartIcon = () => {
   //   setHitHeart(!hitHeart)
@@ -71,7 +78,11 @@ function PostCard({ postData }) {
               <div className="card-body post-background-color">
                 <div className="d-flex justify-content-between mb-3">
                   <div className="d-flex">
-                    <img className="card-img-top card-image" src={item.avatar} alt="CardImage" />
+                    <img
+                      className="card-img-top card-image"
+                      src={userInfoData.find((postItem) => postItem.name === item.userName)?.avatar}
+                      alt="CardImage"
+                    />
                     <div className="d-flex justify-content-center" style={{ marginLeft: '10px' }}>
                       <div
                         role="button"

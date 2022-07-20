@@ -101,4 +101,19 @@ export const deletePost = async(req, res) => {
     }
 }
 
+// 當使用者被刪除後，刪除他所有貼文
+export const deleteUserPost = async(req, res) => {
+
+    try {
+        await PostItems.remove({
+            userName: req.body.name
+        })
+
+        res.status(201).json(PostItems);
+    }catch(error){
+        res.status(404).json({ message: error.message })
+    }
+
+}
+
 export default router

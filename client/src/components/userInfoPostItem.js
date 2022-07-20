@@ -22,8 +22,6 @@ function UserInfoPostItem({ detailData, userData }) {
     setCommentText('')
   }
 
-  console.log(detailData, 'item')
-
   return (
     <div className="post-card-style">
       <div className="card-deck d-block justify-content-center mt-3">

@@ -13,7 +13,7 @@
                     }
                 ],
                 "id": "1",
-                "content": "五條",
+                "content": "A",
                 "like": "10",
                 "comment": [
                     {
@@ -30,7 +30,7 @@
                     }
                 ],
                 "id": "2",
-                "content": "主角",
+                "content": "B",
                 "like": "10",
                 "comment": [
                     {
@@ -47,7 +47,7 @@
                     }
                 ],
                 "id": "3",
-                "content": "矇眼五條",
+                "content": "C",
                 "like": "10",
                 "comment": [
                     {

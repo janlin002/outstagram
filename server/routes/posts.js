@@ -5,7 +5,8 @@ import {
     postComment,
     deleteComment,
     uploadPost,
-    deletePost
+    deletePost,
+    deleteUserPost
 } from '../controllers/posts.js'
 
 const router = express.Router()
@@ -19,5 +20,7 @@ router.delete('/delete', deleteComment)
 router.post('/uploadPost', uploadPost)
 
 router.delete('/delete-post', deletePost)
+
+router.delete('/delete-user-post', deleteUserPost)
 
 export default router

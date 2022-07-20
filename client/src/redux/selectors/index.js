@@ -41,4 +41,11 @@ export const deletePostLoading = (state) => (
   state.deletePostLoading
 )
 
+export const deleteUserLoading = (state) => (
+  state.deleteUserLoading
+)
+export const deleteUserError = (state) => (
+  state.deleteUserError
+)
+
 export const abc = 'abc'

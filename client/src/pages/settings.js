@@ -38,9 +38,7 @@ const settings = () => {
 
   const handleSubmit = () => {
     const value = { avatar, info, currentUsers }
-
     dispatch(updateUserInfo(value))
-    // 需加入 更改 postItem avatar 的 api
     SwalSubmitSuccess()
     navigate('/home')
   }
