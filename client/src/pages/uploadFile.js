@@ -55,7 +55,7 @@ function UploadFile() {
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="card-deck d-block justify-content-center mt-3">
-        <div className="card col-lg-7 col-sm-10 m-auto">
+        <div className="card col-lg-8 col-sm-10 m-auto">
           <div className="card-body post-background-color">
 
             {/* 圖片選取 */}

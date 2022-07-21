@@ -74,7 +74,7 @@ function PostCard({ postData }) {
       postData.map((item) => (
         <div className="post-card-style">
           <div className="card-deck d-block justify-content-center mt-3">
-            <div className="card col-lg-7 col-sm-10 m-auto ">
+            <div className="card col-lg-8 col-sm-10 m-auto ">
               <div className="card-body post-background-color">
                 <div className="d-flex justify-content-between mb-3">
                   <div className="d-flex">

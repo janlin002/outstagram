@@ -8,11 +8,14 @@ function UploadImage({
   setFile,
 }) {
   const handleUploadFile = (e) => {
-    const uploadFile = e.target.files
-    if (uploadFile) {
-      const binaryData = []
-      binaryData.push(uploadFile[0])
-      setFile(URL.createObjectURL(new Blob(binaryData)))
+    const basicFile = e.target.files[0]
+
+    const reader = new FileReader()
+
+    reader.readAsDataURL(basicFile)
+
+    reader.onload = function () {
+      setFile(reader.result)
     }
   }
 
@@ -89,6 +92,3 @@ UploadImage.propTypes = {
   file: PropTypes.instanceOf(Object).isRequired,
   setFile: PropTypes.func.isRequired,
 }
-
-// setFile 透過 props 傳遞
-// 加入radio，去選則要用網址，還是本地檔案

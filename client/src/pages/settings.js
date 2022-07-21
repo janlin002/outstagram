@@ -47,7 +47,7 @@ const settings = () => {
     userInfoData.map((item) => (
       item.name === currentUsers && (
         <div className="card-deck d-block justify-content-center mt-3" key={item.name}>
-          <div className="card col-lg-7 col-sm-10 m-auto d-block">
+          <div className="card col-lg-8 col-sm-10 m-auto d-block">
             <div className="card-body post-background-color">
               <div className="d-flex align-items-center text-center m-5">
                 <div className="col-lg-6 col-md-6 col-sm-12">

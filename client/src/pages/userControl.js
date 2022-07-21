@@ -35,7 +35,7 @@ function UserControl() {
   }, [deleteLoading])
   return (
     <div className="card-deck d-block justify-content-center mt-3">
-      <div className="col-lg-7 col-sm-10 m-auto d-block">
+      <div className="col-lg-8 col-sm-10 m-auto d-block">
         <div>
           {
             userInfos.map((item) => (

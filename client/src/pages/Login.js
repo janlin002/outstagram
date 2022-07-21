@@ -74,7 +74,7 @@ function Login() {
   }
   return (
     <div className="card-deck mt-5">
-      <div className="card col-lg-7 col-sm-10 m-auto">
+      <div className="card col-lg-8 col-sm-10 m-auto">
         <div className="card-body text-center">
           <img
             src={loginImage}
