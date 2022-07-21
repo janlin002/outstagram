@@ -12,7 +12,7 @@
 - React
 - Bootstrap
 - React-icons
-- React-loading-skeleton (刪除)
+- React-loading-skeleton (刪除) => react-loading-icons
 - React-slick
 - React-Modal (刪除)
 - Redux-logger (在 console 內看 redux)

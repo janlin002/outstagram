@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import UploadImage from '../components/uploadImage'
 import {
   postNewUser,
 } from '../redux/actions'
+
+import {
+  userInfo,
+} from '../redux/selectors'
 
 import {
   SwalCreateUser,
@@ -22,6 +26,10 @@ function CreateUser() {
   const [avatar, setAvatar] = useState({})
   const [uploadType, setUploadType] = useState('')
 
+  const users = useSelector(userInfo)
+
+  const haveSameUser = users.find((item) => item.name === name)
+
   const handleCreateUser = () => {
     dispatch(postNewUser({
       name, avatar, info, popular,
@@ -37,9 +45,13 @@ function CreateUser() {
             請輸入使用者名稱
             <div>
               <input type="text" onChange={(e) => setName(e.target.value)} />
-              <div>
-                <b style={{ color: 'red' }}>請斟酌上傳檔案的大小</b>
-              </div>
+              {
+                haveSameUser && (
+                  <div>
+                    <b style={{ color: 'red' }}>此名稱已經有人使用，請換其他名稱</b>
+                  </div>
+                )
+              }
             </div>
           </div>
 
@@ -52,6 +64,9 @@ function CreateUser() {
                 uploadType={uploadType}
                 setUploadType={setUploadType}
               />
+              <div>
+                <b style={{ color: 'red' }}>請斟酌上傳檔案的大小</b>
+              </div>
             </div>
           </div>
 
