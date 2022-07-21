@@ -8,13 +8,13 @@
 
 ### 前端
 
-- webpack
+- Webpack
 - React
 - Bootstrap
 - React-icons
-- React-loading-skeleton
+- React-loading-skeleton (刪除)
 - React-slick
-- React-Modal
+- React-Modal (刪除)
 - Redux-logger (在 console 內看 redux)
 - Sweetalert2
 - Formik && Yup (驗證)

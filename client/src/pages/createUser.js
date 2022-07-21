@@ -37,6 +37,9 @@ function CreateUser() {
             請輸入使用者名稱
             <div>
               <input type="text" onChange={(e) => setName(e.target.value)} />
+              <div>
+                <b style={{ color: 'red' }}>請斟酌上傳檔案的大小</b>
+              </div>
             </div>
           </div>
 
@@ -90,6 +93,13 @@ function CreateUser() {
             onClick={() => handleCreateUser()}
           >
             新增使用者
+          </button>
+          <button
+            type="button"
+            className="btn btn-outline-danger m-3"
+            onClick={() => navigate('/')}
+          >
+            返回
           </button>
         </div>
       </div>

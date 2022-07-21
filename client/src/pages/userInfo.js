@@ -114,6 +114,7 @@ function UserInfo() {
                             <div className="text">
                               <BsTrashFill
                                 size={50}
+                                color="black"
                               />
                             </div>
                           </div>

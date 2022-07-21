@@ -15,11 +15,12 @@ app.use(cors())
 dotenv.config()
 
 // 解析JSON格式 請求大小限制: 30mb
+app.use(express.json({limit : "50mb"}));
 app.use(bodyParser.json())
-app.use(bodyParser.json({limit: "30mb", extended: true}))
+app.use(bodyParser.json({limit: "50mb", extended: true}))
 
 // 解析urlencoded格式 請求大小限制: 30mb, 擴展
-app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true}))
 
 app.use('/posts', postRouter)
 app.use('/user', userRouter)
