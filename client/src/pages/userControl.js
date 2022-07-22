@@ -40,7 +40,7 @@ function UserControl() {
           {
             userInfos.map((item) => (
               <div
-                className="d-flex justify-content-between mb-3 align-items-center"
+                className="d-flex justify-content-between mb-3 align-items-center post-background-color"
                 style={{ border: '1px solid #c4c4c4', borderRadius: '10px' }}
               >
                 <div className="m-3">

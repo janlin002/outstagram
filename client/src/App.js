@@ -7,6 +7,7 @@ import {
 
 import LoadingPage from 'Components/loadingPage'
 import Header from './pages/header'
+// import Footer from './pages/footer'
 import Router from './routes'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         }
         </Routes>
       </Suspense>
+      {/* <Footer /> */}
     </HashRouter>
   )
 }

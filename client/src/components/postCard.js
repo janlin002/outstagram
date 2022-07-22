@@ -181,20 +181,23 @@ function PostCard({ postData }) {
                 }
                 <div>
                   <p>目前使用者: {currentUsers}</p>
-                  <input
-                    type="text"
-                    style={{ width: '100%' }}
-                    placeholder="請輸入..."
-                    onChange={(e) => setCommentText(e.target.value)}
-                    value={commentText}
-                  />
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={handleSubmit}
-                  >
-                    送出
-                  </button>
+                  <div className="d-flex">
+                    <input
+                      type="text"
+                      style={{ width: '50%' }}
+                      placeholder="請輸入..."
+                      onChange={(e) => setCommentText(e.target.value)}
+                      value={commentText}
+                    />
+                    <button
+                      type="button"
+                      className="btn btn-outline-primary"
+                      onClick={handleSubmit}
+                      style={{ marginLeft: '10px' }}
+                    >
+                      送出
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -95,7 +95,7 @@ function UserInfo() {
                 postItem.map((post) => {
                   if (post.userName === item.name) {
                     return (
-                      <div className="col-lg-4 col-md- col-sm-12 post-container">
+                      <div className="col-lg-4 col-md-6 col-sm-12 post-container">
                         <div
                           role="button"
                           className="image-container"
