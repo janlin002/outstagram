@@ -75,11 +75,14 @@ function UserInfo() {
               <div className="row d-flex justify-content-center align-items-center">
                 {/* <div className="d-flex justify-content-center align-items-cen"> */}
                 <div className="col-lg-6 col-md-6 col-sm-12 p-3">
-                  <img
-                    src={item.avatar}
-                    className="user-info-avatar"
-                    alt=""
-                  />
+                  <div className="d-flex justify-content-center">
+                    <img
+                      src={item.avatar}
+                      className="user-info-avatar"
+                      alt=""
+                    />
+                  </div>
+
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-12">
                   <h3>
