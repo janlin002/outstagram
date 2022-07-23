@@ -35,8 +35,6 @@ function PostCard({ postData }) {
 
   const postLoading = useSelector(postItemsLoading)
 
-  console.log(postLoading, 'postLoading')
-
   // const handleHeartIcon = () => {
   //   setHitHeart(!hitHeart)
   // }
