@@ -38,20 +38,16 @@
 
 進入主要畫面會有所有使用者的貼文，如果有想留言的部分，可以在貼文的留言區，寫下自己的想法
 
-![comment]()
+![comment](./client/src/assets/image/%E6%88%AA%E5%9C%96%202022-07-23%20%E4%B8%8B%E5%8D%883.45.51.png)
 
 點擊十字按鈕，可以新增貼文，貼文可使用連結或是自己電腦裡面的圖片(使用 radio 做切換)
 
-![add-post]()
+![add-post](./client/src/assets/image/%E6%88%AA%E5%9C%96%202022-07-23%20%E4%B8%8B%E5%8D%883.46.10.png)
 
 如果想更改使用者基本資料，也可以點擊設定頁
 
-![user-setting]
+![user-setting](./client/src/assets/image/%E6%88%AA%E5%9C%96%202022-07-23%20%E4%B8%8B%E5%8D%883.46.26.png)
 
 可手動刪除使用者，會將這位使用者永久刪除，包含他的基本資料跟他的貼文
 
-![delete-user]()
-
-點擊頭像 icon，可以看到這位使用者的所有貼文
-
-![user-info]()
+![delete-user](./client/src/assets/image/%E6%88%AA%E5%9C%96%202022-07-23%20%E4%B8%8B%E5%8D%883.46.47.png)
