@@ -8,7 +8,8 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import { currentUser, userInfo } from '../redux/selectors'
+import LoadingPage from 'Components/loadingPage'
+import { currentUser, userInfo, postItemsLoading } from '../redux/selectors'
 import '../assets/css/postCard.scss'
 import PostNoData from './postCardNoData'
 import PostImage from './postImage'
@@ -32,11 +33,9 @@ function PostCard({ postData }) {
   const navigate = useNavigate()
   const userInfoData = useSelector(userInfo)
 
-  console.log(currentUsers, userInfoData, 'currentUsers')
+  const postLoading = useSelector(postItemsLoading)
 
-  const normalData = userInfoData.find((item) => item.name === currentUsers)
-
-  console.log(normalData, postData, 'normalData')
+  console.log(postLoading, 'postLoading')
 
   // const handleHeartIcon = () => {
   //   setHitHeart(!hitHeart)
@@ -70,46 +69,48 @@ function PostCard({ postData }) {
   }
 
   return (
-    postData.length === 0 ? <PostNoData /> : (
-      postData.map((item) => (
-        <div className="post-card-style">
-          <div className="card-deck d-block justify-content-center mt-3">
-            <div className="card col-lg-8 col-sm-10 m-auto ">
-              <div className="card-body post-background-color">
-                <div className="d-flex justify-content-between mb-3">
-                  <div className="d-flex">
-                    <img
-                      className="card-img-top card-image"
-                      src={userInfoData.find((postItem) => postItem.name === item.userName)?.avatar}
-                      alt="CardImage"
-                    />
-                    <div className="d-flex justify-content-center" style={{ marginLeft: '10px' }}>
-                      <div
-                        role="button"
-                        className="d-flex justify-content-center card-name"
-                        onClick={() => navigate('/userInfo')}
-                        onKeyDown={() => navigate('/userInfo')}
-                        tabIndex={0}
-                      >
-                        {item.userName}
+    // eslint-disable-next-line no-nested-ternary
+    postData.length === 0 && postLoading === false ? <PostNoData /> : (
+      postLoading === true ? <LoadingPage /> : (
+        postData.map((item) => (
+          <div className="post-card-style">
+            <div className="card-deck d-block justify-content-center mt-3">
+              <div className="card col-lg-8 col-sm-10 m-auto ">
+                <div className="card-body post-background-color">
+                  <div className="d-flex justify-content-between mb-3">
+                    <div className="d-flex">
+                      <img
+                        className="card-img-top card-image"
+                        src={userInfoData.find((postItem) => postItem.name === item.userName)?.avatar}
+                        alt="CardImage"
+                      />
+                      <div className="d-flex justify-content-center" style={{ marginLeft: '10px' }}>
+                        <div
+                          role="button"
+                          className="d-flex justify-content-center card-name"
+                          onClick={() => navigate('/userInfo')}
+                          onKeyDown={() => navigate('/userInfo')}
+                          tabIndex={0}
+                        >
+                          {item.userName}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    role="button"
-                    onClick={() => handleDeletePost(item._id)}
-                    tabIndex={0}
-                    onKeyDown=""
-                  >
-                    <AiOutlineDelete
-                      size={20}
-                    />
-                  </div>
+                    <div
+                      role="button"
+                      onClick={() => handleDeletePost(item._id)}
+                      tabIndex={0}
+                      onKeyDown=""
+                    >
+                      <AiOutlineDelete
+                        size={20}
+                      />
+                    </div>
 
-                </div>
-                <PostImage imageData={item.postImage} />
-                {/* <div className="d-flex">
+                  </div>
+                  <PostImage imageData={item.postImage} />
+                  {/* <div className="d-flex">
                   <div
                     role="button"
                     className="card-icon"
@@ -140,18 +141,18 @@ function PostCard({ postData }) {
                   </h5>
                 </div> */}
 
-                <div>
-                  <div className="d-flex mt-3">
-                    <b style={{ paddingRight: '10px' }}>
-                      {item.userName}
-                    </b>
-                    <p>{item.info}</p>
+                  <div>
+                    <div className="d-flex mt-3">
+                      <b style={{ paddingRight: '10px' }}>
+                        {item.userName}
+                      </b>
+                      <p>{item.info}</p>
+                    </div>
                   </div>
-                </div>
 
-                <h3 className="text-center">留言板</h3>
+                  <h3 className="text-center">留言板</h3>
 
-                {
+                  {
                   item.postContent.length === 0 ? (
                     <div className="mt-3 mb-3">目前沒有留言...</div>
                   ) : (
@@ -179,31 +180,31 @@ function PostCard({ postData }) {
                     ))
                   )
                 }
-                <div>
-                  <p>目前使用者: {currentUsers}</p>
-                  <div className="d-flex">
-                    <input
-                      type="text"
-                      style={{ width: '50%' }}
-                      placeholder="請輸入..."
-                      onChange={(e) => setCommentText(e.target.value)}
-                      value={commentText}
-                    />
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary"
-                      onClick={handleSubmit}
-                      style={{ marginLeft: '10px' }}
-                    >
-                      送出
-                    </button>
+                  <div>
+                    <p>目前使用者: {currentUsers}</p>
+                    <div className="d-flex">
+                      <input
+                        type="text"
+                        style={{ width: '50%' }}
+                        placeholder="請輸入..."
+                        onChange={(e) => setCommentText(e.target.value)}
+                        value={commentText}
+                      />
+                      <button
+                        type="button"
+                        className="btn btn-outline-primary"
+                        onClick={handleSubmit}
+                        style={{ marginLeft: '10px' }}
+                      >
+                        送出
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      ))
+        )))
     )
   )
 }

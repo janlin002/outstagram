@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const postUrl = 'http://localhost:2000/posts'
-const userUrl = 'http://localhost:2000/user'
+const postUrl = 'https://outstagram-demo.herokuapp.com/posts'
+const userUrl = 'https://outstagram-demo.herokuapp.com/user'
 
 export const fetchPosts = (userId) => axios.post(postUrl, { userID: userId })
 export const postComments = (comments) => axios.post(`${postUrl}/comment`, comments)
