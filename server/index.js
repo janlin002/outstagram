@@ -25,6 +25,10 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true}))
 app.use('/posts', postRouter)
 app.use('/user', userRouter)
 
+app.get('/', (req, res)=>{
+    res.send('its work')
+})
+
 // const CONNECTION_URL = 'mongodb+srv://outstagram:outstagram@cluster0.huesm.mongodb.net/?retryWrites=true&w=majority'
 
 const PORT = process.env.PORT || 6000

@@ -139,6 +139,3 @@ function Login() {
 }
 
 export default Login
-
-// 使用名稱登入，或是新增使用者
-// 新增非使用者，擋掉邏輯

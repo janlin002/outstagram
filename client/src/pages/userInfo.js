@@ -72,15 +72,16 @@ function UserInfo() {
         <div className="card-deck d-block justify-content-center mt-3" key={item.name}>
           <div className="card col-lg-8 col-sm-10 m-auto">
             <div className="card-body post-background-color">
-              <div className="d-flex align-items-center m-5">
-                <div className="col-6 text-center">
+              <div className="row d-flex justify-content-center align-items-center">
+                {/* <div className="d-flex justify-content-center align-items-cen"> */}
+                <div className="col-lg-6 col-md-6 col-sm-12 p-3">
                   <img
                     src={item.avatar}
                     className="user-info-avatar"
                     alt=""
                   />
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6 col-md-6 col-sm-12">
                   <h3>
                     {item.name}
                     {
@@ -89,6 +90,7 @@ function UserInfo() {
                   </h3>
                   <p>{item.info}</p>
                 </div>
+                {/* </div> */}
               </div>
               <div className="row">
                 {
